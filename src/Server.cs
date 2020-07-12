@@ -50,14 +50,14 @@ namespace NWN.MasterList {
     public static async Task<Self> Get(string publicKey) {
       using var client = new HttpClient();
       var response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
-      return JsonConvert.DeserializeObject<Self>(jsonResponse);
+      return JsonConvert.DeserializeObject<Self>(response);
     }
     
     
     public async Task<Self> Get(string ip, int port) {
       using var client = new HttpClient();
-      var jsonResponse = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
-      return JsonConvert.DeserializeObject<Self>(jsonResponse);
+      var response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
+      return JsonConvert.DeserializeObject<Self>(response);
     }
   }
 }
