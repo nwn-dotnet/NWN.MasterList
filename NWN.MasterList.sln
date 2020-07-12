@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWN.MasterList", "NWN.MasterList\NWN.MasterList.csproj", "{CFFF9DBD-2DE3-4F9C-A29F-EFDB8E614D2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWN.MasterList", "NWN.MasterList.csproj", "{CFFF9DBD-2DE3-4F9C-A29F-EFDB8E614D2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

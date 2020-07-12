@@ -49,17 +49,15 @@ namespace NWN.MasterList {
     
     public static async Task<Self> Get(string publicKey) {
       using var client = new HttpClient();
-      var jsonResponse = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
-      var test = JsonConvert.DeserializeObject<Self>(jsonResponse);
-      return test;
+      var response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
+      return JsonConvert.DeserializeObject<Self>(jsonResponse);
     }
     
     
     public async Task<Self> Get(string ip, int port) {
       using var client = new HttpClient();
       var jsonResponse = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
-      var test = JsonConvert.DeserializeObject<Self>(jsonResponse);
-      return test;
+      return JsonConvert.DeserializeObject<Self>(jsonResponse);
     }
   }
 }
