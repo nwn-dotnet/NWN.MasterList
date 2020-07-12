@@ -33,7 +33,7 @@ jobs:
         run: echo ::set-env name=VERSION_NUMBER::$(echo ${{ steps.bump_version.outputs.tag }} | sed 's/[v]//g')
 
       - name: Pack
-        run: dotnet pack NWN.Masterlist.csproj --configuration Release -p:PackageVersion=${{ env.VERSION_NUMBER }} -o output
+        run: dotnet pack NWN.MasterList.csproj --configuration Release -p:PackageVersion=${{ env.VERSION_NUMBER }} -o output
 
       - name: Publish Package
         run: dotnet nuget push output/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
