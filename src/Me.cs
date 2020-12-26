@@ -14,12 +14,7 @@ namespace NWN.MasterList {
     public async Task<Self> Get() {
       using var client = new HttpClient();
       string response;
-      try {
-        response = await client.GetStringAsync("https://api.nwn.beamdog.net/v1/me");
-      } catch (Exception e) {
-        Console.WriteLine(e);
-        throw;
-      }
+      response = await client.GetStringAsync("https://api.nwn.beamdog.net/v1/me");
 
       return JsonConvert.DeserializeObject<Self>(response);
     }

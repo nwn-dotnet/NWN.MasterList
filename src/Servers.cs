@@ -9,12 +9,7 @@ namespace NWN.MasterList {
     public static async Task<List<Server.Data>> Get() {
       using var client = new HttpClient();
       string response;
-      try {
-        response = await client.GetStringAsync("https://api.nwn.beamdog.net/v1/servers");
-      } catch (Exception e) {
-        Console.WriteLine(e);
-        throw;
-      }
+      response = await client.GetStringAsync("https://api.nwn.beamdog.net/v1/servers");
       return JsonConvert.DeserializeObject<List<Server.Data>>(response);
     }
   }

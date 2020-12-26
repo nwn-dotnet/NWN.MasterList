@@ -83,24 +83,14 @@ namespace NWN.MasterList {
     public static async Task<Data> GetServer(string publicKey) {
       var client = new HttpClient();
       string response;
-      try {
-        response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
-      } catch (Exception e) {
-        Console.WriteLine(e);
-        throw;
-      }
+      response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
       return JsonConvert.DeserializeObject<Data>(response);
     }
     
     public static async Task<Data> GetServer(string ip, int port) {
       var client = new HttpClient();
       string response;
-      try {
-        response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
-      } catch (Exception e) {
-        Console.WriteLine(e);
-        throw;
-      }
+      response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
 
       return JsonConvert.DeserializeObject<Data>(response);
     }
