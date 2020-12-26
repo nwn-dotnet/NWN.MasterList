@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -7,12 +8,12 @@ namespace NWN.MasterList {
   public class Server {
     public class Manifest {
       public bool required { get; set; } 
-      public string hash { get; set; }
+      public string? hash { get; set; }
     }
 
     public class Nwsync {
-      public List<Manifest> manifests { get; set; }
-      public string url { get; set; }
+      public List<Manifest>? manifests { get; set; }
+      public string? url { get; set; }
     }
 
     public struct Self {
@@ -47,16 +48,28 @@ namespace NWN.MasterList {
     }
 
     
-    public static async Task<Self> Get(string publicKey) {
-      using var client = new HttpClient();
-      var response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
+    public static async Task<Self> GetServer(string publicKey) {
+      var client = new HttpClient();
+      string response;
+      try {
+        response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
+      } catch (Exception e) {
+        Console.WriteLine(e);
+        throw;
+      }
       return JsonConvert.DeserializeObject<Self>(response);
     }
     
-    
-    public async Task<Self> Get(string ip, int port) {
-      using var client = new HttpClient();
-      var response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
+    public static async Task<Self> GetServer(string ip, int port) {
+      var client = new HttpClient();
+      string response;
+      try {
+        response = await client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
+      } catch (Exception e) {
+        Console.WriteLine(e);
+        throw;
+      }
+
       return JsonConvert.DeserializeObject<Self>(response);
     }
   }

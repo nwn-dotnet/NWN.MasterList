@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,8 +9,14 @@ namespace NWN.MasterList {
   public class Servers {
     public static async Task<List<Server.Self>> Get() {
       using var client = new HttpClient();
-      var jsonResponse = await client.GetStringAsync("https://api.nwn.beamdog.net/v1/servers");
-      return JsonConvert.DeserializeObject<List<Server.Self>>(jsonResponse);
+      string response;
+      try {
+        response = await client.GetStringAsync("https://api.nwn.beamdog.net/v1/servers");
+      } catch (Exception e) {
+        Console.WriteLine(e);
+        throw;
+      }
+      return JsonConvert.DeserializeObject<List<Server.Self>>(response);
     }
   }
 }
