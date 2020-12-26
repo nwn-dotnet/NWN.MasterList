@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace NWN.MasterList {
   public class Servers {
-    public static async Task<List<Server.Self>> Get() {
+    public static async Task<List<Server.Data>> Get() {
       using var client = new HttpClient();
       string response;
       try {
@@ -16,7 +15,7 @@ namespace NWN.MasterList {
         Console.WriteLine(e);
         throw;
       }
-      return JsonConvert.DeserializeObject<List<Server.Self>>(response);
+      return JsonConvert.DeserializeObject<List<Server.Data>>(response);
     }
   }
 }

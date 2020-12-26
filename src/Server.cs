@@ -16,39 +16,39 @@ namespace NWN.MasterList {
       public string? url { get; set; }
     }
 
-    public struct Self {
-      public int first_seen { get; set; } 
-      public int last_advertisement { get; set; } 
-      public string session_name { get; set; } 
-      public string module_name { get; set; } 
-      public string module_description { get; set; } 
-      public bool passworded { get; set; } 
-      public int min_level { get; set; } 
-      public int max_level { get; set; } 
-      public int current_players { get; set; } 
-      public int max_players { get; set; } 
-      public string build { get; set; } 
-      public int rev { get; set; } 
-      public int pvp { get; set; } 
-      public bool servervault { get; set; } 
-      public bool elc { get; set; } 
-      public bool ilr { get; set; } 
-      public bool one_party { get; set; } 
-      public bool player_pause { get; set; } 
-      public int os { get; set; } 
-      public int language { get; set; } 
-      public int game_type { get; set; } 
-      public int latency { get; set; } 
-      public string host { get; set; } 
-      public int port { get; set; } 
-      public string kx_pk { get; set; } 
-      public string sign_pk { get; set; } 
-      public string connecthint { get; set; } 
-      public Nwsync nwsync { get; set; }
+    public struct Data {
+      public int FirstSeen { get; set; } 
+      public int LastAdvertisement { get; set; } 
+      public string SessionName { get; set; } 
+      public string ModuleName { get; set; } 
+      public string ModuleDescription { get; set; } 
+      public bool Passworded { get; set; } 
+      public int MinLevel { get; set; } 
+      public int MaxLevel { get; set; } 
+      public int CurrentPlayers { get; set; } 
+      public int MaxPlayers { get; set; } 
+      public string Build { get; set; } 
+      public int Rev { get; set; } 
+      public int Pvp { get; set; } 
+      public bool Servervault { get; set; } 
+      public bool Elc { get; set; } 
+      public bool Ilr { get; set; } 
+      public bool OneParty { get; set; } 
+      public bool PlayerPause { get; set; } 
+      public int Os { get; set; } 
+      public int Language { get; set; } 
+      public int GameType { get; set; } 
+      public int Latency { get; set; } 
+      public string Host { get; set; } 
+      public int Port { get; set; } 
+      public string KxPk { get; set; } 
+      public string SignPk { get; set; } 
+      public string Connecthint { get; set; } 
+      public Nwsync NwSync { get; set; }
     }
 
     
-    public static async Task<Self> GetServer(string publicKey) {
+    public static async Task<Data> GetServer(string publicKey) {
       var client = new HttpClient();
       string response;
       try {
@@ -57,10 +57,10 @@ namespace NWN.MasterList {
         Console.WriteLine(e);
         throw;
       }
-      return JsonConvert.DeserializeObject<Self>(response);
+      return JsonConvert.DeserializeObject<Data>(response);
     }
     
-    public static async Task<Self> GetServer(string ip, int port) {
+    public static async Task<Data> GetServer(string ip, int port) {
       var client = new HttpClient();
       string response;
       try {
@@ -70,7 +70,7 @@ namespace NWN.MasterList {
         throw;
       }
 
-      return JsonConvert.DeserializeObject<Self>(response);
+      return JsonConvert.DeserializeObject<Data>(response);
     }
   }
 }
