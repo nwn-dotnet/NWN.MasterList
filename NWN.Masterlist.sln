@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWN.MasterList", "API\NWN.MasterList.csproj", "{122B410F-B543-4002-AA07-3C7AE8B6DF8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWN.MasterList.Test", "Test\NWN.MasterList.Test.csproj", "{A446B2D0-48CA-4587-9CE3-31AAB17718B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{122B410F-B543-4002-AA07-3C7AE8B6DF8A}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{122B410F-B543-4002-AA07-3C7AE8B6DF8A}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{122B410F-B543-4002-AA07-3C7AE8B6DF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{122B410F-B543-4002-AA07-3C7AE8B6DF8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{122B410F-B543-4002-AA07-3C7AE8B6DF8A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A446B2D0-48CA-4587-9CE3-31AAB17718B4}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{A446B2D0-48CA-4587-9CE3-31AAB17718B4}.Debug|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
