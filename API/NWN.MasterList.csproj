@@ -3,6 +3,7 @@
         <TargetFramework>net5.0</TargetFramework>
         <LangVersion>9.0</LangVersion>
         <PackageId>NWN.MasterList</PackageId>
+        <IsPackable>true</IsPackable>
         <Authors>NWN-dotnet</Authors>
         <Nullable>enable</Nullable>
         <PackageTags>Neverwinter Nights;NWN;</PackageTags>
