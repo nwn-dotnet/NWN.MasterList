@@ -1,12 +1,13 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using NWN.MasterList.Data;
 
 namespace NWN.MasterList {
   public class Helper {
-    static async Task<int> MasterListPositionFromSessionName(string sessionName) {
-      List<Server.Data> servers = await Servers.Get();
-      return servers.Where(s => s.SessionName == sessionName).Select(self => servers.IndexOf(self)).FirstOrDefault();
-    }
+    public static int MasterListPositionFromSessionName(List<NwServer> servers, string sessionName) =>
+      servers.Where(s => s.SessionName == sessionName).Select(self => servers.IndexOf(self)).FirstOrDefault();
+
+    public static IOrderedEnumerable<NwServer> GetAllFirstSeen(List<NwServer> servers) =>
+      servers.OrderByDescending(x => x.FirstSeen);
   }
 }
