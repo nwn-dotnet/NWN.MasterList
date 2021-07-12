@@ -3,7 +3,7 @@ using System.Linq;
 using NWN.MasterList.Data;
 
 namespace NWN.MasterList {
-  public class Helper {
+  public static class Helper {
     public static int MasterListPositionFromSessionName(List<NwServer> servers, string sessionName) =>
       servers.Where(s => s.SessionName == sessionName).Select(self => servers.IndexOf(self)).FirstOrDefault();
 

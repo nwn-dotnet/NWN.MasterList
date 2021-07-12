@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace NWN.MasterList.Data {
   public struct Me {
-    [JsonProperty("address")]
+    [JsonPropertyName("address")]
     public string Address { get; set; }
-    [JsonProperty("servers")]
+    [JsonPropertyName("servers")]
     public List<NwServer> Servers { get; set; }
   }
 }

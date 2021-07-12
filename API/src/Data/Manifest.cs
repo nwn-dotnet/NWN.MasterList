@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace NWN.MasterList.Data {
   public struct Manifest {
-    [JsonProperty("required")]
+    [JsonPropertyName("required")]
     public bool Required { get; set; }
-    [JsonProperty("hash")]
+    [JsonPropertyName("hash")]
     public string? Hash { get; set; }
   }
 }

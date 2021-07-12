@@ -1,37 +1,36 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using NWN.MasterList.Data;
 
 namespace NWN.MasterList {
+  public static class Extend {
+    public static async Task<List<NwServer>> GetServers(this Client client) {
+      string response = await client.HttpClient.GetStringAsync("https://api.nwn.beamdog.net/v1/servers");
+      return JsonSerializer.Deserialize<List<NwServer>>(json: response);
+    }
+
+    public static async Task<NwServer> GetServer(this Client client, string publicKey) {
+      string response = await client.HttpClient.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
+      return JsonSerializer.Deserialize<NwServer>(response);
+    }
+
+    public static async Task<NwServer> GetServer(this Client client, string ip, int port) {
+      string response = await client.HttpClient.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
+      return JsonSerializer.Deserialize<NwServer>(response);
+    }
+
+    public static async Task<Me> GetMe(this Client client) {
+      string response = await client.HttpClient.GetStringAsync("https://api.nwn.beamdog.net/v1/me");
+      return JsonSerializer.Deserialize<Me>(response);
+    }
+  }
+
   public class Client {
-    private static HttpClient _client { get; set; }
-    public List<NwServer> Servers { get; set; }
-
-    public static async Task<List<NwServer>> GetServers() {
-      string response = await _client.GetStringAsync("https://api.nwn.beamdog.net/v1/servers");
-      return JsonConvert.DeserializeObject<List<NwServer>>(response);
-    }
-
-    public static async Task<NwServer> GetServer(string publicKey) {
-      string response = await _client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{publicKey}");
-      return JsonConvert.DeserializeObject<NwServer>(response);
-    }
-
-    public static async Task<NwServer> GetServer(string ip, int port) {
-      string response = await _client.GetStringAsync($"https://api.nwn.beamdog.net/v1/servers/{ip}/{port}");
-      return JsonConvert.DeserializeObject<NwServer>(response);
-    }
-
-    public static async Task<Me> GetMe() {
-      string response = await _client.GetStringAsync("https://api.nwn.beamdog.net/v1/me");
-      return JsonConvert.DeserializeObject<Me>(response);
-    }
-
-    public Client() {
-      _client = new HttpClient();
-      Servers = GetServers().Result;
+    public HttpClient HttpClient { get; }
+    public Client(){
+        HttpClient = new HttpClient();
     }
   }
 }
