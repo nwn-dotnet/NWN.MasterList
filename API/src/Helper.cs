@@ -1,13 +1,38 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
 using NWN.MasterList.Data;
 
 namespace NWN.MasterList {
-  public class Helper {
-    public static int MasterListPositionFromSessionName(List<NwServer> servers, string sessionName) =>
+  public static class Helper {
+    public static string jsonUrl = "https://api.nwn.beamdog.net/v1/";
+
+    public static int MasterListPositionFromSessionName(this Client client, List<NwServer> servers, string sessionName) =>
       servers.Where(s => s.SessionName == sessionName).Select(self => servers.IndexOf(self)).FirstOrDefault();
 
-    public static IOrderedEnumerable<NwServer> GetAllFirstSeen(List<NwServer> servers) =>
-      servers.OrderByDescending(x => x.FirstSeen);
+    public async static Task<IOrderedEnumerable<NwServer>> GetAllFirstSeen(this Client client) {
+      var response = await client.GetServers();
+      return response.OrderByDescending(x => x.FirstSeen);
+    }
+    public static async Task<List<NwServer>> GetServers(this Client client) {
+      string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers");
+      return JsonSerializer.Deserialize<List<NwServer>>(response);
+    }
+
+    public static async Task<NwServer> GetServer(this Client client, string publicKey) {
+      string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers{publicKey}");
+      return JsonSerializer.Deserialize<NwServer>(response);
+    }
+
+    public static async Task<NwServer> GetServer(this Client client, string ip, int port) {
+      string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers/{ip}/{port}");
+      return JsonSerializer.Deserialize<NwServer>(response);
+    }
+
+    public static async Task<Me> GetMe(this Client client) {
+      string response = await Client.HttpClient.GetStringAsync(jsonUrl);
+      return JsonSerializer.Deserialize<Me>(response);
+    }
   }
 }
