@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NWN.MasterList.Data {
   public struct NwSync {
-    [JsonProperty("manifests")]
+    [JsonPropertyName("manifests")]
     public List<Manifest>? Manifests { get; set; }
-    [JsonProperty("url")]
+    [JsonPropertyName("url")]
     public string? URL { get; set; }
   }
 }

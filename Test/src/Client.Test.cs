@@ -5,17 +5,17 @@ namespace NWN.MasterList.Test
     public class Client
     {
         [Fact]
-        public void GetServersTest()
+        public async void GetServersTest()
         {
             var connection = new MasterList.Client();
-            Assert.NotEmpty(connection.Servers);
+            Assert.NotEmpty(await connection.GetServers());
         }
 
         [Fact]
-        public void TestGetAllFirstSeen()
+        public async void TestGetAllFirstSeen()
         {
             var connection = new MasterList.Client();
-            Assert.NotEmpty(Helper.GetAllFirstSeen(connection.Servers));
+            Assert.NotEmpty(await connection.GetAllFirstSeen());
         }
     }
 }
