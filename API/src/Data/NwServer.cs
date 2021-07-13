@@ -1,66 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace NWN.MasterList.Data {
   public struct NwServer {
-    [JsonProperty("first_seen")]
+    [JsonPropertyName("first_seen")]
     public int FirstSeen { get; set; }
-    [JsonProperty("last_advertisement")]
+    [JsonPropertyName("last_advertisement")]
     public int LastAdvertisement { get; set; }
-    [JsonProperty("session_name")]
+    [JsonPropertyName("session_name")]
     public string SessionName { get; set; }
-    [JsonProperty("module_name")]
+    [JsonPropertyName("module_name")]
     public string ModuleName { get; set; }
-    [JsonProperty("module_description")]
+    [JsonPropertyName("module_description")]
     public string ModuleDescription { get; set; }
-    [JsonProperty("passworded")]
+    [JsonPropertyName("passworded")]
     public bool Passworded { get; set; }
-    [JsonProperty("min_level")]
+    [JsonPropertyName("min_level")]
     public int MinLevel { get; set; }
-    [JsonProperty("max_level")]
+    [JsonPropertyName("max_level")]
     public int MaxLevel { get; set; }
-    [JsonProperty("current_players")]
+    [JsonPropertyName("current_players")]
     public int CurrentPlayers { get; set; }
-    [JsonProperty("max_players")]
+    [JsonPropertyName("max_players")]
     public int MaxPlayers { get; set; }
-    [JsonProperty("build")]
+    [JsonPropertyName("build")]
     public string Build { get; set; }
-    [JsonProperty("rev")]
+    [JsonPropertyName("rev")]
     public int Revision { get; set; }
-    [JsonProperty("pvp")]
+    [JsonPropertyName("pvp")]
     public int PVP { get; set; }
-    [JsonProperty("servervault")]
+    [JsonPropertyName("servervault")]
     public bool ServerVault { get; set; }
-    [JsonProperty("elc")]
+    [JsonPropertyName("elc")]
     public bool ELC { get; set; }
-    [JsonProperty("ilr")]
+    [JsonPropertyName("ilr")]
     public bool ILR { get; set; }
-    [JsonProperty("one_party")]
+    [JsonPropertyName("one_party")]
     public bool OneParty { get; set; }
-    [JsonProperty("player_pause")]
+    [JsonPropertyName("player_pause")]
     public bool PlayerPause { get; set; }
-    [JsonProperty("os")]
+    [JsonPropertyName("os")]
     public int OS { get; set; }
-    [JsonProperty("language")]
+    [JsonPropertyName("language")]
     public int Language { get; set; }
-    [JsonProperty("game_type")]
+    [JsonPropertyName("game_type")]
     public int GameType { get; set; }
-    [JsonProperty("latency")]
+    [JsonPropertyName("latency")]
     public int Latency { get; set; }
-    [JsonProperty("host")]
+    [JsonPropertyName("host")]
     public string IP { get; set; }
-    [JsonProperty("port")]
+    [JsonPropertyName("port")]
     public int Port { get; set; }
-    [JsonProperty("kx_pk")]
+    [JsonPropertyName("kx_pk")]
     public string KxPk { get; set; }
-    [JsonProperty("sign_pk")]
+    [JsonPropertyName("sign_pk")]
     public string SignPk { get; set; }
-    [JsonProperty("connecthint")]
+    [JsonPropertyName("connecthint")]
     public string ConnectHint { get; set; }
-    [JsonProperty("nwsync")]
+    [JsonPropertyName("nwsync")]
     public NwSync NwSync { get; set; }
   }
 }
