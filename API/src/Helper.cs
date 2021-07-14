@@ -22,6 +22,9 @@ namespace NWN.MasterList {
     public async static Task<IOrderedEnumerable<NwServer>> GetAllBuild(this Client client) =>
       (await client.GetServers()).OrderBy(x => x.Build).ThenBy(x => x.ModuleName);
 
+    public async static Task<IOrderedEnumerable<NwServer>> GetAllConnectHint(this Client client) =>
+      (await client.GetServers()).OrderBy(x => x.ConnectHint).ThenBy(x => x.ModuleName);
+
     public static async Task<List<NwServer>> GetServers(this Client client) {
       string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers");
       return JsonSerializer.Deserialize<List<NwServer>>(response);

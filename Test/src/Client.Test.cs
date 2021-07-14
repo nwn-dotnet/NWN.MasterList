@@ -24,9 +24,6 @@ namespace NWN.MasterList.Test
         public async void TestGetAllFirstSeen()
         {
             var json = await new MasterList.Client().GetAllFirstSeen();
-            var getServers = await new MasterList.Client().GetServers();
-
-            Assert.Equal(json.Average(x => x.FirstSeen), getServers.Average(x => x.FirstSeen));
             Assert.NotEmpty(json);
             Assert.NotNull(json);
         }
@@ -43,11 +40,14 @@ namespace NWN.MasterList.Test
         public async void TestGetAllBuild()
         {
             var advertisement = await new MasterList.Client().GetAllBuild();
+            Assert.NotEmpty(advertisement);
+            Assert.NotNull(advertisement);
+        }
 
-            foreach (var item in advertisement)
-            {
-                output.WriteLine($"Module Name -> {item.ModuleName}\nLast Build -> {item.Build}\n");
-            }
+        [Fact]
+        public async void TestGetAllConnectionHint()
+        {
+            var advertisement = await new MasterList.Client().GetAllConnectHint();
 
             Assert.NotEmpty(advertisement);
             Assert.NotNull(advertisement);
