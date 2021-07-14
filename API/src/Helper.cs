@@ -13,7 +13,7 @@ namespace NWN.MasterList {
 
     public async static Task<IOrderedEnumerable<NwServer>> GetAllFirstSeen(this Client client) {
       var response = await client.GetServers();
-      return response.OrderByDescending(x => x.FirstSeen);
+      return response.OrderBy(x => x.FirstSeen);
     }
     public static async Task<List<NwServer>> GetServers(this Client client) {
       string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers");
