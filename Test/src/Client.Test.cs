@@ -38,5 +38,19 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(advertisement);
             Assert.NotNull(advertisement);
         }
+
+        [Fact]
+        public async void TestGetAllBuild()
+        {
+            var advertisement = await new MasterList.Client().GetAllBuild();
+
+            foreach (var item in advertisement)
+            {
+                output.WriteLine($"Module Name -> {item.ModuleName}\nLast Build -> {item.Build}\n");
+            }
+
+            Assert.NotEmpty(advertisement);
+            Assert.NotNull(advertisement);
+        }
     }
 }
