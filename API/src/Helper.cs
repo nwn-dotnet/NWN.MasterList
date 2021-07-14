@@ -13,11 +13,11 @@ namespace NWN.MasterList {
 
     public async static Task<IOrderedEnumerable<NwServer>> GetAllFirstSeen(this Client client) {
       var response = await client.GetServers();
-      return response.OrderBy(x => x.FirstSeen);
+      return response.OrderBy(x => x.FirstSeen).ThenBy(x => x.ModuleName);
     }
 
     public async static Task<IOrderedEnumerable<NwServer>> GetAllLastAdvertisement(this Client client) => 
-      (await client.GetServers()).OrderBy(x => x.LastAdvertisement);
+      (await client.GetServers()).OrderBy(x => x.LastAdvertisement).ThenBy(x => x.ModuleName);
 
     public async static Task<IOrderedEnumerable<NwServer>> GetAllBuild(this Client client) =>
       (await client.GetServers()).OrderBy(x => x.Build).ThenBy(x => x.ModuleName);
