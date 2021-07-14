@@ -15,6 +15,10 @@ namespace NWN.MasterList {
       var response = await client.GetServers();
       return response.OrderBy(x => x.FirstSeen);
     }
+
+    public async static Task<IOrderedEnumerable<NwServer>> GetAllLastAdvertisement(this Client client) => 
+      (await client.GetServers()).OrderBy(x => x.LastAdvertisement);
+
     public static async Task<List<NwServer>> GetServers(this Client client) {
       string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers");
       return JsonSerializer.Deserialize<List<NwServer>>(response);

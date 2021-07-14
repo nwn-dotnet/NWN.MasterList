@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -17,6 +15,7 @@ namespace NWN.MasterList.Test
         {
             var connection = new MasterList.Client();
             var json = await connection.GetServers();
+
             Assert.NotEmpty(json);
             Assert.NotNull(json);
         }
@@ -26,9 +25,18 @@ namespace NWN.MasterList.Test
         {
             var json = await new MasterList.Client().GetAllFirstSeen();
             var getServers = await new MasterList.Client().GetServers();
+
             Assert.Equal(json.Average(x => x.FirstSeen), getServers.Average(x => x.FirstSeen));
             Assert.NotEmpty(json);
             Assert.NotNull(json);
+        }
+
+        [Fact]
+        public async void TestGetAllLastAdvertisement()
+        {
+            var advertisement = await new MasterList.Client().GetAllLastAdvertisement();
+            Assert.NotEmpty(advertisement);
+            Assert.NotNull(advertisement);
         }
     }
 }
