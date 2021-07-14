@@ -8,14 +8,18 @@ namespace NWN.MasterList.Test
         public async void GetServersTest()
         {
             var connection = new MasterList.Client();
-            Assert.NotEmpty(await connection.GetServers());
+            var json = await connection.GetServers();
+            Assert.NotEmpty(json);
+            Assert.NotNull(json);
         }
 
         [Fact]
         public async void TestGetAllFirstSeen()
         {
             var connection = new MasterList.Client();
-            Assert.NotEmpty(await connection.GetAllFirstSeen());
+            var json = await connection.GetAllFirstSeen();
+            Assert.NotEmpty(json);
+            Assert.NotNull(json);
         }
     }
 }
