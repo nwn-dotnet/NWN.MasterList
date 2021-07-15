@@ -52,5 +52,14 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(advertisement);
             Assert.NotNull(advertisement);
         }
+
+        [Fact]
+        public async void TestGetAllCurrentPlayersByModuleName()
+        {
+            var advertisement = await new MasterList.Client().GetAllCurrentPlayersByModuleName();
+
+            Assert.NotEmpty(advertisement);
+            Assert.NotNull(advertisement);
+        }
     }
 }
