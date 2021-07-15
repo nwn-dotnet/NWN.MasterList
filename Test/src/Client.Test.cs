@@ -61,5 +61,20 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(advertisement);
             Assert.NotNull(advertisement);
         }
+
+        [Fact]
+        public async void TestGetTotalPlayerCount()
+        {
+            int testB = 0;
+
+            foreach (var item in await new MasterList.Client().GetServers())
+            {
+                testB += item.CurrentPlayers;
+
+            }
+
+            var testA = await new MasterList.Client().GetTotalPlayerCount();
+            Assert.Equal(testA, testB);
+        }
     }
 }

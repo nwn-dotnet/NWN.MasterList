@@ -28,8 +28,11 @@ namespace NWN.MasterList {
     public async static Task<IOrderedEnumerable<NwServer>> GetAllCurrentPlayersByModuleName(this Client client) =>
       (await client.GetServers()).OrderByDescending(x => x.CurrentPlayers).ThenBy(x => x.ModuleName);
 
-    // TODO #16
-    public static async Task<List<NwServer>> GetServers(this Client client) {
+        public async static Task<int> GetTotalPlayerCount(this Client client) =>
+          (await client.GetServers()).Sum(x => x.CurrentPlayers);
+
+        // TODO #16
+        public static async Task<List<NwServer>> GetServers(this Client client) {
       string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers");
       return JsonSerializer.Deserialize<List<NwServer>>(response);
     }
