@@ -65,9 +65,15 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetTotalPlayerCount()
         {
-            int testB = 0;
+            var testB = 0;
             var testA = await new MasterList.Client().GetTotalPlayerCount();
 
+            foreach (var item in await new MasterList.Client().GetServers())
+            {
+                testB += item.CurrentPlayers;
+
+            }
+            
             Assert.Equal(testA, testB);
         }
 
@@ -102,11 +108,6 @@ namespace NWN.MasterList.Test
         public async void TestGetAllGameTypeByType()
         {
             var collection = await new MasterList.Client().GetAllGameTypeByType(10);
-
-            foreach (var item in collection)
-            {
-                output.WriteLine($"{item.ModuleName} -> Game Type:{item.GameType}");
-            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
