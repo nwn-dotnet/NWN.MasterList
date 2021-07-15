@@ -14,52 +14,52 @@ namespace NWN.MasterList.Test
         public async void GetServersTest()
         {
             var connection = new MasterList.Client();
-            var json = await connection.GetServers();
+            var collection = await connection.GetServers();
 
-            Assert.NotEmpty(json);
-            Assert.NotNull(json);
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
         }
 
         [Fact]
         public async void TestGetAllFirstSeen()
         {
-            var json = await new MasterList.Client().GetAllFirstSeen();
-            Assert.NotEmpty(json);
-            Assert.NotNull(json);
+            var collection = await new MasterList.Client().GetAllFirstSeen();
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
         }
 
         [Fact]
         public async void TestGetAllLastAdvertisement()
         {
-            var advertisement = await new MasterList.Client().GetAllLastAdvertisement();
-            Assert.NotEmpty(advertisement);
-            Assert.NotNull(advertisement);
+            var collection = await new MasterList.Client().GetAllLastAdvertisement();
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
         }
 
         [Fact]
         public async void TestGetAllBuild()
         {
-            var advertisement = await new MasterList.Client().GetAllBuild();
-            Assert.NotEmpty(advertisement);
-            Assert.NotNull(advertisement);
+            var collection = await new MasterList.Client().GetAllBuild();
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
         }
 
         [Fact]
         public async void TestGetAllConnectionHint()
         {
-            var advertisement = await new MasterList.Client().GetAllConnectHint();
+            var collection = await new MasterList.Client().GetAllConnectHint();
 
-            Assert.NotEmpty(advertisement);
-            Assert.NotNull(advertisement);
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
         }
 
         [Fact]
         public async void TestGetAllCurrentPlayersByModuleName()
         {
-            var advertisement = await new MasterList.Client().GetAllCurrentPlayersByModuleName();
+            var collection = await new MasterList.Client().GetAllCurrentPlayersByModuleName();
 
-            Assert.NotEmpty(advertisement);
-            Assert.NotNull(advertisement);
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
         }
 
         [Fact]
@@ -75,6 +75,19 @@ namespace NWN.MasterList.Test
 
             var testA = await new MasterList.Client().GetTotalPlayerCount();
             Assert.Equal(testA, testB);
+        }
+
+        [Fact]
+        public async void TestGetAllElC()
+        {
+            var collection = await new MasterList.Client().GetAllElC();
+
+            foreach (var item in collection)
+            {
+                
+            }
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
         }
     }
 }

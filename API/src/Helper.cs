@@ -28,6 +28,8 @@ namespace NWN.MasterList {
     public async static Task<IOrderedEnumerable<NwServer>> GetAllCurrentPlayersByModuleName(this Client client) =>
       (await client.GetServers()).OrderByDescending(x => x.CurrentPlayers).ThenBy(x => x.ModuleName);
 
+    public async static Task<IOrderedEnumerable<NwServer>> GetAllElC(this Client client) =>
+      (await client.GetServers()).OrderBy(x => x.ELC).ThenBy(x => x.ModuleName);
     public async static Task<int> GetTotalPlayerCount(this Client client) =>
       (await client.GetServers()).Sum(x => x.CurrentPlayers);
 
