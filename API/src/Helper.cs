@@ -34,7 +34,7 @@ namespace NWN.MasterList
 		public async static Task<IOrderedEnumerable<NwServer>> GetAllElc(this Client client) =>
 			(await client.GetServers()).OrderBy(x => x.ELC).ThenBy(x => x.ModuleName);
 
-    // TODO #17
+		// TODO #17
 		public async static Task<IOrderedEnumerable<NwServer>> GetAllElcByType(this Client client, bool setting)
 		{
 			var response = await client.GetAllElc();
@@ -42,7 +42,10 @@ namespace NWN.MasterList
 		}
 
 		public async static Task<int> GetTotalPlayerCount(this Client client) =>
-	(await client.GetServers()).Sum(x => x.CurrentPlayers);
+			(await client.GetServers()).Sum(x => x.CurrentPlayers);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllGameType(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.GameType).ThenBy(x => x.ModuleName);
 
 		// TODO #16
 		public static async Task<List<NwServer>> GetServers(this Client client)

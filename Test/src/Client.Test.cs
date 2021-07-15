@@ -104,5 +104,19 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllGameType()
+        {
+            var collection = await new MasterList.Client().GetAllGameType();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> Game Type:{item.GameType}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
