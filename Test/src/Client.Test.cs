@@ -66,14 +66,8 @@ namespace NWN.MasterList.Test
         public async void TestGetTotalPlayerCount()
         {
             int testB = 0;
-
-            foreach (var item in await new MasterList.Client().GetServers())
-            {
-                testB += item.CurrentPlayers;
-
-            }
-
             var testA = await new MasterList.Client().GetTotalPlayerCount();
+
             Assert.Equal(testA, testB);
         }
 
@@ -81,11 +75,6 @@ namespace NWN.MasterList.Test
         public async void TestGetAllElC()
         {
             var collection = await new MasterList.Client().GetAllElc();
-
-            foreach (var item in collection)
-            {
-                output.WriteLine($"{item.ModuleName} -> ELC:{item.ELC}");
-            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
@@ -96,11 +85,6 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetAllElcByType(false);
 
-            foreach (var item in collection)
-            {
-                output.WriteLine($"{item.ModuleName} -> ELC:{item.ELC}");
-            }
-
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -109,6 +93,15 @@ namespace NWN.MasterList.Test
         public async void TestGetAllGameType()
         {
             var collection = await new MasterList.Client().GetAllGameType();
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllGameTypeByType()
+        {
+            var collection = await new MasterList.Client().GetAllGameTypeByType(10);
 
             foreach (var item in collection)
             {

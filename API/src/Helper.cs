@@ -47,8 +47,11 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllGameType(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.GameType).ThenBy(x => x.ModuleName);
 
-		// TODO #16
-		public static async Task<List<NwServer>> GetServers(this Client client)
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllGameTypeByType(this Client client, int gameType) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.GameType == gameType).OrderBy(x => x.ModuleName);
+
+        // TODO #16
+        public static async Task<List<NwServer>> GetServers(this Client client)
 		{
 			string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers");
 			return JsonSerializer.Deserialize<List<NwServer>>(response);
