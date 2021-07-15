@@ -34,14 +34,10 @@ namespace NWN.MasterList
 		public async static Task<IOrderedEnumerable<NwServer>> GetAllElc(this Client client) =>
 			(await client.GetServers()).OrderBy(x => x.ELC).ThenBy(x => x.ModuleName);
 
-		// TODO #17
-		public async static Task<IOrderedEnumerable<NwServer>> GetAllElcByType(this Client client, bool setting)
-		{
-			var response = await client.GetAllElc();
-			return (IOrderedEnumerable<NwServer>)response.Select(x => x.Equals(setting));
-		}
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllElcByType(this Client client, bool setting) => 
+			(IOrderedEnumerable<NwServer>)(await client.GetAllElc()).Where(x => x.ELC == setting).OrderBy(x => x.ModuleName);
 
-		public async static Task<int> GetTotalPlayerCount(this Client client) =>
+        public async static Task<int> GetTotalPlayerCount(this Client client) =>
 			(await client.GetServers()).Sum(x => x.CurrentPlayers);
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllGameType(this Client client) =>
