@@ -24,6 +24,7 @@ namespace NWN.MasterList.Test
         public async void TestGetAllFirstSeen()
         {
             var collection = await new MasterList.Client().GetAllFirstSeen();
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -32,6 +33,7 @@ namespace NWN.MasterList.Test
         public async void TestGetAllLastAdvertisement()
         {
             var collection = await new MasterList.Client().GetAllLastAdvertisement();
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -40,6 +42,16 @@ namespace NWN.MasterList.Test
         public async void TestGetAllBuild()
         {
             var collection = await new MasterList.Client().GetAllBuild();
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllBuildByType()
+        {
+            var collection = await new MasterList.Client().GetAllBuildByType("8186");
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -48,7 +60,7 @@ namespace NWN.MasterList.Test
         public async void TestGetAllConnectionHint()
         {
             var collection = await new MasterList.Client().GetAllConnectHint();
-
+            
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }

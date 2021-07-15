@@ -25,6 +25,9 @@ namespace NWN.MasterList
 		public async static Task<IOrderedEnumerable<NwServer>> GetAllBuild(this Client client) =>
 			(await client.GetServers()).OrderBy(x => x.Build).ThenBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllBuildByType(this Client client, string buildNumber) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.Build == buildNumber).OrderBy(x => x.ModuleName);
+			
 		public async static Task<IOrderedEnumerable<NwServer>> GetAllConnectHint(this Client client) =>
 			(await client.GetServers()).OrderBy(x => x.ConnectHint).ThenBy(x => x.ModuleName);
 
