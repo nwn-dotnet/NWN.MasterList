@@ -80,12 +80,27 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllElC()
         {
-            var collection = await new MasterList.Client().GetAllElC();
+            var collection = await new MasterList.Client().GetAllElc();
 
             foreach (var item in collection)
             {
-                
+                output.WriteLine($"{item.ModuleName} -> ELC:{item.ELC}");
             }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllElcByType()
+        {
+            var collection = await new MasterList.Client().GetAllElcByType(false);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> ELC:{item.ELC}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
