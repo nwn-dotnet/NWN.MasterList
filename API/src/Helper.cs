@@ -157,6 +157,12 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllPvPByType(this Client client, int pvptype) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.PVP == pvptype).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllRevision(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.Revision).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllRevisionByType(this Client client, int revisionType) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.Revision == revisionType).OrderBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
