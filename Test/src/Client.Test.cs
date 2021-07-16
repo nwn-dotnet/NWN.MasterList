@@ -162,11 +162,6 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetAllKxPk();
 
-            foreach (var item in collection)
-            {
-                output.WriteLine($"{item.ModuleName} -> {item.KxPk}");
-            }
-
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -180,6 +175,20 @@ namespace NWN.MasterList.Test
             foreach (var item in collection)
             {
                 output.WriteLine($"{item.ModuleName} -> {item.KxPk}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllLanguage()
+        {
+            var collection = await new MasterList.Client().GetAllLanguage();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.Language}");
             }
 
             Assert.NotEmpty(collection);

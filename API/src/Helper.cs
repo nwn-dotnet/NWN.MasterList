@@ -68,6 +68,9 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllServersByKxPk(this Client client, string kxPkip) =>
             (await client.GetServers()).Where(x => x.KxPk == kxPkip).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllLanguage(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.Language).ThenBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
