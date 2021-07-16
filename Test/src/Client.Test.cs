@@ -208,5 +208,19 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllLatency()
+        {
+            var collection = await new MasterList.Client().GetAllLatency();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.Latency}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }

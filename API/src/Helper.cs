@@ -74,6 +74,9 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllLanguageByType(this Client client, int languageType) =>
             (await client.GetServers()).Where(x => x.Language == languageType).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllLatency(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.Latency).ThenBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
