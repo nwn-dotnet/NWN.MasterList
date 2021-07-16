@@ -49,6 +49,9 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllGameTypeByType(this Client client, int gameType) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.GameType == gameType).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetIRLAll(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.ILR).ThenBy(x => x.ModuleName);
+
         public async static Task<IOrderedEnumerable<NwServer>> GetAllIrlByType(this Client client, bool irl) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.ILR == irl).OrderBy(x => x.ModuleName);
 
