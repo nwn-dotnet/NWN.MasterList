@@ -95,6 +95,15 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetMaxLevelRange(this Client client, int low = 1, int high = int.MaxValue) =>
             (await client.GetServers()).Where(x => x.MaxLevel >= low && x.MaxLevel <= high).OrderBy(x => x.MaxLevel).ThenBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetMinLevelGreaterThan(this Client client, int levelMin) =>
+            (await client.GetServers()).Where(x => x.MinLevel > levelMin).OrderBy(x => x.MinLevel).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetMinLevelLesserThan(this Client client, int levelMin) =>
+            (await client.GetServers()).Where(x => x.MinLevel < levelMin).OrderBy(x => x.MinLevel).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetMinLevelRange(this Client client, int low = 1, int high = int.MaxValue) =>
+            (await client.GetServers()).Where(x => x.MinLevel >= low && x.MinLevel <= high).OrderBy(x => x.MinLevel).ThenBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
