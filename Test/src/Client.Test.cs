@@ -124,5 +124,13 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllIrlByType()
+        {
+            var collection = await new MasterList.Client().GetAllIrlByType(true);
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
