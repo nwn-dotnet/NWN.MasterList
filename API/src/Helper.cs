@@ -77,7 +77,6 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllLatency(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.Latency).ThenBy(x => x.ModuleName);
 
-
         public async static Task<IOrderedEnumerable<NwServer>> GetLatencyGreaterThan(this Client client, int latencyRate) =>
             (await client.GetServers()).Where(x => x.Latency > latencyRate).OrderBy(x => x.Latency).ThenBy(x => x.ModuleName);
 
@@ -86,6 +85,15 @@ namespace NWN.MasterList
 
         public async static Task<IOrderedEnumerable<NwServer>> GetLatencyRange(this Client client, int low = 0, int high = int.MaxValue) =>
             (await client.GetServers()).Where(x => x.Latency >= low && x.Latency <= high).OrderBy(x => x.Latency).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetMaxLevelGreaterThan(this Client client, int levelMax) =>
+            (await client.GetServers()).Where(x => x.MaxLevel > levelMax).OrderBy(x => x.MaxLevel).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetMaxLevelLesserThan(this Client client, int levelMax) =>
+            (await client.GetServers()).Where(x => x.MaxLevel < levelMax).OrderBy(x => x.MaxLevel).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetMaxLevelRange(this Client client, int low = 1, int high = int.MaxValue) =>
+            (await client.GetServers()).Where(x => x.MaxLevel >= low && x.MaxLevel <= high).OrderBy(x => x.MaxLevel).ThenBy(x => x.ModuleName);
 
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)

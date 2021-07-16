@@ -250,5 +250,33 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetMaxLevelGreaterThan()
+        {
+            var collection = await new MasterList.Client().GetMaxLevelGreaterThan(20);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.MaxLevel}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetMaxLevelRange()
+        {
+            var collection = await new MasterList.Client().GetMaxLevelRange(20, 40);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.MaxLevel}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
