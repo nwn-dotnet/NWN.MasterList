@@ -143,15 +143,16 @@ namespace NWN.MasterList.Test
         }
 
         [Fact]
-        public async void TestGetIpsAll()
+        public async void TestGetAllServersByIp()
         {
-            var collection = await new MasterList.Client().GetIpsAll();
+            //A Carpathian Nightmare -> 68.183.104.164
+            var collection = await new MasterList.Client().GetAllServersByIp("68.183.104.164");
 
             foreach (var item in collection)
             {
                 output.WriteLine($"{item.ModuleName} -> {item.IP}");
             }
-            
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }

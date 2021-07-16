@@ -59,6 +59,8 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetIpsAll(this Client client) => 
 			(await client.GetServers()).OrderBy(x => Version.Parse(x.IP)).ThenBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllServersByIp(this Client client, string ip) =>
+            (await client.GetServers()).OrderBy(x => x.IP == ip).ThenBy(x => x.ModuleName);
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
