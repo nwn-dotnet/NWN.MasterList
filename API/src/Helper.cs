@@ -139,6 +139,18 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetPlayerPauseByType(this Client client, bool pause) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.PlayerPause == pause).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetPortGreaterThan(this Client client, int portNumber) =>
+            (await client.GetServers()).Where(x => x.Port > portNumber).OrderBy(x => x.Port).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetPortLesserThan(this Client client, int portNumber) =>
+            (await client.GetServers()).Where(x => x.Port < portNumber).OrderBy(x => x.Port).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetPortRange(this Client client, int low = 0, int high = 65535) =>
+            (await client.GetServers()).Where(x => x.Port >= low && x.Port <= high).OrderBy(x => x.Port).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllByPortNumber(this Client client, int portNumber) =>
+            (await client.GetServers()).Where(x => x.Port == portNumber).OrderBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
