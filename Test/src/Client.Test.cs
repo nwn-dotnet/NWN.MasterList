@@ -156,5 +156,20 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllKxPk()
+        {
+            //A Carpathian Nightmare -> 68.183.104.164
+            var collection = await new MasterList.Client().GetAllKxPk();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.KxPk}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
