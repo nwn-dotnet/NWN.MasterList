@@ -151,6 +151,12 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllByPortNumber(this Client client, int portNumber) =>
             (await client.GetServers()).Where(x => x.Port == portNumber).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllPvp(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.PVP).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllPvPByType(this Client client, int pvptype) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.PVP == pvptype).OrderBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
