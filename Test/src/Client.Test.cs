@@ -194,5 +194,19 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllLanguageByType()
+        {
+            var collection = await new MasterList.Client().GetAllLanguageByType(0);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.Language}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
