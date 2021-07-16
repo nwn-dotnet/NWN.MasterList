@@ -292,5 +292,33 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllByModuleName()
+        {
+            var collection = await new MasterList.Client().GetAllByModuleName();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.ModuleName}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllNwSync()
+        {
+            var collection = await new MasterList.Client().GetAllNwSync();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.NwSync}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
