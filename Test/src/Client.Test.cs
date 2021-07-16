@@ -307,7 +307,7 @@ namespace NWN.MasterList.Test
             Assert.NotNull(collection);
         }
 
-        [Fact]
+        /*[Fact]
         public async void TestGetAllNwSync()
         {
             var collection = await new MasterList.Client().GetAllNwSync();
@@ -317,6 +317,34 @@ namespace NWN.MasterList.Test
                 output.WriteLine($"{item.ModuleName} -> {item.NwSync}");
             }
 
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }*/
+
+        [Fact]
+        public async void TestGetAllOneParty()
+        {
+            var collection = await new MasterList.Client().GetAllOneParty();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.OneParty}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetOnePartyByType()
+        {
+            var collection = await new MasterList.Client().GetOnePartyByType(true);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.OneParty}");
+            }
+            
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
