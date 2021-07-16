@@ -278,5 +278,19 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllModuleDescription()
+        {
+            var collection = await new MasterList.Client().GetAllModuleDescription();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.ModuleDescription}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
