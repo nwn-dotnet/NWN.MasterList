@@ -163,6 +163,12 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllRevisionByType(this Client client, int revisionType) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.Revision == revisionType).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllServerVault(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.ServerVault).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllServerVaultByType(this Client client, bool vaultType) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.ServerVault == vaultType).OrderBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
