@@ -145,7 +145,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllServersByIp()
         {
-            //A Carpathian Nightmare -> 68.183.104.164
+            //  A Carpathian Nightmare
             var collection = await new MasterList.Client().GetAllServersByIp("68.183.104.164");
 
             foreach (var item in collection)
@@ -160,8 +160,22 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllKxPk()
         {
-            //A Carpathian Nightmare -> 68.183.104.164
             var collection = await new MasterList.Client().GetAllKxPk();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.KxPk}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllServersByKxPk()
+        {
+            //  A Carpathian Nightmare
+            var collection = await new MasterList.Client().GetAllServersByKxPk("6FttLhv6ICT0EEIQC8DnBnZeGJUzTZE/iGbsXsdhrwI=");
 
             foreach (var item in collection)
             {
