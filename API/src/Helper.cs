@@ -121,6 +121,12 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetOnePartyByType(this Client client, bool oneParty) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.OneParty == oneParty).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllOS(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.OS).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllOSByType(this Client client, int osType) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.OS == osType).OrderBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {

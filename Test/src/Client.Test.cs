@@ -344,7 +344,35 @@ namespace NWN.MasterList.Test
             {
                 output.WriteLine($"{item.ModuleName} -> {item.OneParty}");
             }
-            
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllOS()
+        {
+            var collection = await new MasterList.Client().GetAllOS();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.OS}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllOSByType()
+        {
+            var collection = await new MasterList.Client().GetAllOSByType(1);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.OS}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
