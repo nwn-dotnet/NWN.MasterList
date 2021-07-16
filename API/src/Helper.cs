@@ -133,6 +133,12 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetPasswordedByType(this Client client, bool password) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.Passworded == password).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllPlayerPause(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.PlayerPause).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetPlayerPauseByType(this Client client, bool pause) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.PlayerPause == pause).OrderBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
