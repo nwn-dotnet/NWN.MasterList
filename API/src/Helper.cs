@@ -187,6 +187,9 @@ namespace NWN.MasterList
         public async static Task<int> GetTotalMaxPlayers(this Client client) =>
             (await client.GetServers()).Sum(x => x.MaxPlayers);
 
+        public async static Task<int> GetGameTypeCountByType(this Client client, int gameType) =>
+            (await client.GetServers()).Count(x => x.GameType == gameType);
+
         public async static Task<int> GetTotalPlayerCount(this Client client) =>
             (await client.GetServers()).Sum(x => x.CurrentPlayers);
 
