@@ -193,7 +193,6 @@ namespace NWN.MasterList
         public async static Task<int> GetILRCountByType(this Client client, bool ilr) =>
             (await client.GetServers()).Count(x => x.ILR == ilr);
 
-
         public async static Task<int> GetIPCountByType(this Client client, string ip) =>
             (await client.GetServers()).Count(x => x.IP == ip);
 
@@ -202,6 +201,13 @@ namespace NWN.MasterList
 
         public async static Task<int> GetLanguageCountByType(this Client client, int languageType) =>
             (await client.GetServers()).Count(x => x.Language == languageType);
+
+        public async static Task<int> GetMaxLevelCountByType(this Client client, int levelMax) =>
+            (await client.GetServers()).Count(x => x.MaxLevel == levelMax);
+
+        public async static Task<int> GetMinLevelCountByType(this Client client, int levelMin) =>
+            (await client.GetServers()).Count(x => x.MinLevel == levelMin);
+
         public async static Task<int> GetTotalPlayerCount(this Client client) =>
             (await client.GetServers()).Sum(x => x.CurrentPlayers);
 
