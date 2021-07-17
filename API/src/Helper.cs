@@ -41,7 +41,7 @@ namespace NWN.MasterList
         public async static Task<int> GetTotalPlayerCount(this Client client) =>
             (await client.GetServers()).Sum(x => x.CurrentPlayers);
 
-        public async static Task<int> GettotalMaxPlayers(this Client client) =>
+        public async static Task<int> GetTotalMaxPlayers(this Client client) =>
             (await client.GetServers()).Sum(x => x.MaxPlayers);
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllGameType(this Client client) =>
