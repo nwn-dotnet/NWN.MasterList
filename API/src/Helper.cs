@@ -223,6 +223,12 @@ namespace NWN.MasterList
         public async static Task<int> GetPortCountByType(this Client client, int port) =>
             (await client.GetServers()).Count(x => x.Port == port);
 
+        public async static Task<int> GetPVPCountByType(this Client client, int pvptype) =>
+            (await client.GetServers()).Count(x => x.PVP == pvptype);
+
+        public async static Task<int> GetRevisionCountByType(this Client client, int revisionType) =>
+            (await client.GetServers()).Count(x => x.Revision == revisionType);
+
 		public async static Task<int> GetTotalPlayerCount(this Client client) =>
 			(await client.GetServers()).Sum(x => x.CurrentPlayers);
 
