@@ -182,7 +182,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetIRLAll()
         {
-            var collection = await new MasterList.Client().GetIRLAll();
+            var collection = await new MasterList.Client().GetILRAll();
 
             foreach (var item in collection)
             {
@@ -196,7 +196,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllIrlByType()
         {
-            var collection = await new MasterList.Client().GetAllIrlByType(true);
+            var collection = await new MasterList.Client().GetAllIlrByType(true);
 
             foreach (var item in collection)
             {
