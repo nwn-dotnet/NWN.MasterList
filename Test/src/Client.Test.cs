@@ -16,6 +16,11 @@ namespace NWN.MasterList.Test
             var connection = new MasterList.Client();
             var collection = await connection.GetServers();
 
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -24,6 +29,11 @@ namespace NWN.MasterList.Test
         public async void TestGetAllFirstSeen()
         {
             var collection = await new MasterList.Client().GetAllFirstSeen();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.FirstSeen}");
+            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
@@ -34,6 +44,11 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetAllLastAdvertisement();
 
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.LastAdvertisement}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -42,6 +57,11 @@ namespace NWN.MasterList.Test
         public async void TestGetAllBuild()
         {
             var collection = await new MasterList.Client().GetAllBuild();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.Build}");
+            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
@@ -52,6 +72,11 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetAllBuildByType("8186");
 
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.Build}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -60,7 +85,12 @@ namespace NWN.MasterList.Test
         public async void TestGetAllConnectionHint()
         {
             var collection = await new MasterList.Client().GetAllConnectHint();
-            
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.ConnectHint}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -69,6 +99,11 @@ namespace NWN.MasterList.Test
         public async void TestGetAllCurrentPlayersByModuleName()
         {
             var collection = await new MasterList.Client().GetAllCurrentPlayersByModuleName();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.CurrentPlayers}");
+            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
@@ -83,7 +118,6 @@ namespace NWN.MasterList.Test
             foreach (var item in await new MasterList.Client().GetServers())
             {
                 testB += item.CurrentPlayers;
-
             }
             
             Assert.Equal(testA, testB);
@@ -94,6 +128,11 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetAllElc();
 
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.ELC}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -102,6 +141,11 @@ namespace NWN.MasterList.Test
         public async void TestGetAllElcByType()
         {
             var collection = await new MasterList.Client().GetAllElcByType(false);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.ELC}");
+            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
@@ -112,6 +156,11 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetAllGameType();
 
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.GameType}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -120,6 +169,11 @@ namespace NWN.MasterList.Test
         public async void TestGetAllGameTypeByType()
         {
             var collection = await new MasterList.Client().GetAllGameTypeByType(10);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.GameType}");
+            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
@@ -130,6 +184,11 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetIRLAll();
 
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.ILR}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -138,6 +197,12 @@ namespace NWN.MasterList.Test
         public async void TestGetAllIrlByType()
         {
             var collection = await new MasterList.Client().GetAllIrlByType(true);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.ILR}");
+            }
+
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
@@ -161,6 +226,11 @@ namespace NWN.MasterList.Test
         public async void TestGetAllKxPk()
         {
             var collection = await new MasterList.Client().GetAllKxPk();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.KxPk}");
+            }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
