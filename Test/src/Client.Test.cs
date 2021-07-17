@@ -446,5 +446,34 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllSignPk()
+        {
+            var collection = await new MasterList.Client().GetAllSignPk();
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.SignPk}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllSignPkByType()
+        {
+            //  Amia
+            var collection = await new MasterList.Client().GetAllSignPkByType("1r7bU9BtpiAmiWLQz7xaCuZaLf3lQE8mn4T675u8HDQ=");
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.SignPk}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }

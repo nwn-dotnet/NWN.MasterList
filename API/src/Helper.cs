@@ -175,6 +175,12 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllSessionNameByType(this Client client, string sessionName) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.SessionName == sessionName).OrderBy(x => x.ModuleName);
 
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllSignPk(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.SignPk).ThenBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllSignPkByType(this Client client, string pk) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.SignPk == pk).OrderBy(x => x.ModuleName);
+
         // TODO #16
         public static async Task<List<NwServer>> GetServers(this Client client)
         {
