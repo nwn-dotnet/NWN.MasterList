@@ -197,6 +197,11 @@ namespace NWN.MasterList
         public async static Task<int> GetIPCountByType(this Client client, string ip) =>
             (await client.GetServers()).Count(x => x.IP == ip);
 
+        public async static Task<int> GetKxPkCountByType(this Client client, string kxPkip) =>
+            (await client.GetServers()).Count(x => x.KxPk == kxPkip);
+
+        public async static Task<int> GetLanguageCountByType(this Client client, int languageType) =>
+            (await client.GetServers()).Count(x => x.Language == languageType);
         public async static Task<int> GetTotalPlayerCount(this Client client) =>
             (await client.GetServers()).Sum(x => x.CurrentPlayers);
 
