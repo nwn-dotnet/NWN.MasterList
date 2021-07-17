@@ -545,5 +545,20 @@ namespace NWN.MasterList.Test
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetAllOsByTypePlayerDescending()
+        {
+            //  Amia
+            var collection = await new MasterList.Client().GetAllOsByTypePlayerDescending(1);
+
+            foreach (var item in collection)
+            {
+                output.WriteLine($"{item.ModuleName} -> {item.OS} -> {item.CurrentPlayers}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
     }
 }
