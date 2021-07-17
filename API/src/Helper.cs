@@ -11,15 +11,6 @@ namespace NWN.MasterList
         public static int MasterListPositionFromSessionName(this Client client, List<NwServer> servers, string sessionName) =>
             servers.Where(s => s.SessionName == sessionName).Select(self => servers.IndexOf(self)).FirstOrDefault();
 
-        public async static Task<IOrderedEnumerable<NwServer>> GetAllFirstSeen(this Client client)
-        {
-            var response = await client.GetServers();
-            return response.OrderBy(x => x.FirstSeen).ThenBy(x => x.ModuleName);
-        }
-
-        public async static Task<IOrderedEnumerable<NwServer>> GetAllLastAdvertisement(this Client client) =>
-            (await client.GetServers()).OrderBy(x => x.LastAdvertisement).ThenBy(x => x.ModuleName);
-
         public async static Task<IOrderedEnumerable<NwServer>> GetAllBuild(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.Build).ThenBy(x => x.ModuleName);
 
@@ -38,11 +29,11 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllElcByType(this Client client, bool setting) =>
             (IOrderedEnumerable<NwServer>)(await client.GetAllElc()).Where(x => x.ELC == setting).OrderBy(x => x.ModuleName);
 
-        public async static Task<int> GetTotalPlayerCount(this Client client) =>
-            (await client.GetServers()).Sum(x => x.CurrentPlayers);
-
-        public async static Task<int> GetTotalMaxPlayers(this Client client) =>
-            (await client.GetServers()).Sum(x => x.MaxPlayers);
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllFirstSeen(this Client client)
+        {
+            var response = await client.GetServers();
+            return response.OrderBy(x => x.FirstSeen).ThenBy(x => x.ModuleName);
+        }
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllGameType(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.GameType).ThenBy(x => x.ModuleName);
@@ -50,14 +41,14 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllGameTypeByType(this Client client, int gameType) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.GameType == gameType).OrderBy(x => x.ModuleName);
 
-        public async static Task<IOrderedEnumerable<NwServer>> GetIRLAll(this Client client) =>
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllIlr(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.ILR).ThenBy(x => x.ModuleName);
 
-        public async static Task<IOrderedEnumerable<NwServer>> GetAllIrlByType(this Client client, bool irl) =>
-            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.ILR == irl).OrderBy(x => x.ModuleName);
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllIlrByType(this Client client, bool ilr) =>
+            (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.ILR == ilr).OrderBy(x => x.ModuleName);
 
-        public async static Task<IOrderedEnumerable<NwServer>> GetIpsAll(this Client client) => 
-			(await client.GetServers()).OrderBy(x => Version.Parse(x.IP)).ThenBy(x => x.ModuleName);
+        public async static Task<IOrderedEnumerable<NwServer>> GetIpsAll(this Client client) =>
+        (await client.GetServers()).OrderBy(x => Version.Parse(x.IP)).ThenBy(x => x.ModuleName);
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllServersByIp(this Client client, string ip) =>
             (await client.GetServers()).OrderBy(x => x.IP == ip).ThenBy(x => x.ModuleName);
@@ -73,6 +64,9 @@ namespace NWN.MasterList
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllLanguageByType(this Client client, int languageType) =>
             (await client.GetServers()).Where(x => x.Language == languageType).OrderBy(x => x.ModuleName);
+
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllLastAdvertisement(this Client client) =>
+            (await client.GetServers()).OrderBy(x => x.LastAdvertisement).ThenBy(x => x.ModuleName);
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllLatency(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.Latency).ThenBy(x => x.ModuleName);
@@ -112,8 +106,8 @@ namespace NWN.MasterList
 
         // TODO #18
         /*public async static Task<IOrderedEnumerable<NwServer>> GetAllNwSync(this Client client) =>
-            (await client.GetServers()).OrderBy(x => x.NwSync);
-        */
+	(await client.GetServers()).OrderBy(x => x.NwSync);
+	*/
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllOneParty(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.OneParty).ThenBy(x => x.ModuleName);
@@ -183,5 +177,11 @@ namespace NWN.MasterList
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllSignPkByType(this Client client, string pk) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.SignPk == pk).OrderBy(x => x.ModuleName);
+
+        public async static Task<int> GetTotalMaxPlayers(this Client client) =>
+            (await client.GetServers()).Sum(x => x.MaxPlayers);
+
+        public async static Task<int> GetTotalPlayerCount(this Client client) =>
+            (await client.GetServers()).Sum(x => x.CurrentPlayers);
     }
 }
