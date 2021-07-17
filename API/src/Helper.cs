@@ -208,6 +208,12 @@ namespace NWN.MasterList
         public async static Task<int> GetMinLevelCountByType(this Client client, int levelMin) =>
             (await client.GetServers()).Count(x => x.MinLevel == levelMin);
 
+        public async static Task<int> GetOnePartyCountByType(this Client client, bool oneParty) =>
+            (await client.GetServers()).Count(x => x.OneParty == oneParty);
+
+        public async static Task<int> GetOsCountByType(this Client client, int osType) =>
+            (await client.GetServers()).Count(x => x.OS == osType);
+
         public async static Task<int> GetTotalPlayerCount(this Client client) =>
             (await client.GetServers()).Sum(x => x.CurrentPlayers);
 
