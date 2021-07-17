@@ -229,6 +229,12 @@ namespace NWN.MasterList
         public async static Task<int> GetRevisionCountByType(this Client client, int revisionType) =>
             (await client.GetServers()).Count(x => x.Revision == revisionType);
 
+        public async static Task<int> GetServerVaultCountByType(this Client client, bool servers) =>
+            (await client.GetServers()).Count(x => x.ServerVault == servers);
+
+        public async static Task<int> GetSessionNameCountByType(this Client client, string sessionName) =>
+            (await client.GetServers()).Count(x => x.SessionName == sessionName);
+
 		public async static Task<int> GetTotalPlayerCount(this Client client) =>
 			(await client.GetServers()).Sum(x => x.CurrentPlayers);
 
