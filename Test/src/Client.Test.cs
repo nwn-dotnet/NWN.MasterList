@@ -579,7 +579,15 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void GetBuildCountByBuildType()
         {
-            var collection = await new MasterList.Client().GetBuildCountByBuildType("8193");
+            var collection = await new MasterList.Client().GetBuildCountByType("8193");
+            output.WriteLine($"{collection}");
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetElcCountByType()
+        {
+            var collection = await new MasterList.Client().GetElcCountByType(true);
             output.WriteLine($"{collection}");
             Assert.NotNull(collection);
         }
