@@ -178,10 +178,19 @@ namespace NWN.MasterList
         public async static Task<IOrderedEnumerable<NwServer>> GetAllSignPkByType(this Client client, string pk) =>
             (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => x.SignPk == pk).OrderBy(x => x.ModuleName);
 
+        public async static Task<int> GetBuildCountByBuildType(this Client client, string buildType) =>
+            (await client.GetServers()).Count(x => x.Build == buildType);
+
         public async static Task<int> GetTotalMaxPlayers(this Client client) =>
             (await client.GetServers()).Sum(x => x.MaxPlayers);
 
         public async static Task<int> GetTotalPlayerCount(this Client client) =>
             (await client.GetServers()).Sum(x => x.CurrentPlayers);
+
+        public async static Task<int> GetAveragePlayerCountPerServer(this Client client) =>
+            (int)((await client.GetServers()).Average(x => x.CurrentPlayers));
+
+        public async static Task<int> GetAverageLatency(this Client client) =>
+                (int)((await client.GetServers()).Average(x => x.Latency));
     }
 }

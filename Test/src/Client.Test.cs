@@ -549,7 +549,6 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllOsByTypePlayerDescending()
         {
-            //  Amia
             var collection = await new MasterList.Client().GetAllOsByTypePlayerDescending(1);
 
             foreach (var item in collection)
@@ -558,6 +557,30 @@ namespace NWN.MasterList.Test
             }
 
             Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetPlayerCapacity()
+        {
+            var collection = await new MasterList.Client().GetAveragePlayerCountPerServer();
+            output.WriteLine($"{collection}");
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAverageLatency()
+        {
+            var collection = await new MasterList.Client().GetAverageLatency();
+            output.WriteLine($"{collection}");
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void GetBuildCountByBuildType()
+        {
+            var collection = await new MasterList.Client().GetBuildCountByBuildType("8193");
+            output.WriteLine($"{collection}");
             Assert.NotNull(collection);
         }
     }
