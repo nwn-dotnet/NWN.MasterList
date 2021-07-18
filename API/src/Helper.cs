@@ -289,7 +289,6 @@ namespace NWN.MasterList
         public static bool IsAllSamePlayerPause(this IOrderedEnumerable<NwServer> servers, bool pause) =>
             servers.All(x => x.PlayerPause.Equals(pause));
 
-
         public static bool IsAllSamePort(this IOrderedEnumerable<NwServer> servers, int port) =>
             servers.All(x => x.Port.Equals(port));
 
@@ -310,5 +309,5 @@ namespace NWN.MasterList
 
         public async static Task<int> GetAverageLatency(this Client client) =>
 			(int)((await client.GetServers()).Average(x => x.Latency));
-		}
+	}
 }
