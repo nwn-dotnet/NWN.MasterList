@@ -253,6 +253,15 @@ namespace NWN.MasterList
         public static bool IsAllSameGameType(this IOrderedEnumerable<NwServer> servers, int gameType) =>
             servers.All(x => x.GameType.Equals(gameType));
 
+        public static bool IsAllSameILR(this IOrderedEnumerable<NwServer> servers, bool ilr) =>
+            servers.All(x => x.ILR.Equals(ilr));
+
+        public static bool IsAllSameIp(this IOrderedEnumerable<NwServer> servers, string ip) =>
+            servers.All(x => x.IP.Equals(ip));
+
+        public static bool IsAllSameKxPk(this IOrderedEnumerable<NwServer> servers, string kxPkip) =>
+            servers.All(x => x.KxPk.Equals(kxPkip));
+
         public async static Task<int> GetAverageLatency(this Client client) =>
 			(int)((await client.GetServers()).Average(x => x.Latency));
 		}
