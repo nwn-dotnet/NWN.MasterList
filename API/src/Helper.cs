@@ -262,6 +262,52 @@ namespace NWN.MasterList
         public static bool IsAllSameKxPk(this IOrderedEnumerable<NwServer> servers, string kxPkip) =>
             servers.All(x => x.KxPk.Equals(kxPkip));
 
+        public static bool IsAllSameLanguage(this IOrderedEnumerable<NwServer> servers, int languageType) =>
+            servers.All(x => x.Language.Equals(languageType));
+
+        public static bool IsAllSameMaxLevel(this IOrderedEnumerable<NwServer> servers, int levelMax) =>
+            servers.All(x => x.MaxLevel.Equals(levelMax));
+
+        public static bool IsAllSameMaxPlayers(this IOrderedEnumerable<NwServer> servers, int players) =>
+            servers.All(x => x.MaxPlayers.Equals(players));
+
+        public static bool IsAllSameMinLevel(this IOrderedEnumerable<NwServer> servers, int players) =>
+            servers.All(x => x.MinLevel.Equals(players));
+
+        public static bool IsAllSameModuleName(this IOrderedEnumerable<NwServer> servers, string name) =>
+            servers.All(x => x.ModuleName.Equals(name));
+
+        public static bool IsAllSameOneParty(this IOrderedEnumerable<NwServer> servers, bool oneParty) =>
+            servers.All(x => x.OneParty.Equals(oneParty));
+
+        public static bool IsAllSameOS(this IOrderedEnumerable<NwServer> servers, int osType) =>
+            servers.All(x => x.OS.Equals(osType));
+
+        public static bool IsAllSamePassworded(this IOrderedEnumerable<NwServer> servers, bool password) =>
+            servers.All(x => x.Passworded.Equals(password));
+
+        public static bool IsAllSamePlayerPause(this IOrderedEnumerable<NwServer> servers, bool pause) =>
+            servers.All(x => x.PlayerPause.Equals(pause));
+
+
+        public static bool IsAllSamePort(this IOrderedEnumerable<NwServer> servers, int port) =>
+            servers.All(x => x.Port.Equals(port));
+
+        public static bool IsAllSamePVP(this IOrderedEnumerable<NwServer> servers, int pvptype) =>
+            servers.All(x => x.PVP.Equals(pvptype));
+
+        public static bool IsAllSameRevision(this IOrderedEnumerable<NwServer> servers, int revisionType) =>
+            servers.All(x => x.Revision.Equals(revisionType));
+
+        public static bool IsAllSameServerVault(this IOrderedEnumerable<NwServer> servers, bool vaultType) =>
+            servers.All(x => x.ServerVault.Equals(vaultType));
+
+        public static bool IsAllSameSessionName(this IOrderedEnumerable<NwServer> servers, string sessionName) =>
+            servers.All(x => x.SessionName.Equals(sessionName));
+
+        public static bool IsAllSameSignPk(this IOrderedEnumerable<NwServer> servers, string sign) =>
+            servers.All(x => x.SignPk.Equals(sign));
+
         public async static Task<int> GetAverageLatency(this Client client) =>
 			(int)((await client.GetServers()).Average(x => x.Latency));
 		}
