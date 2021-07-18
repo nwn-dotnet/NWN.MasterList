@@ -244,7 +244,16 @@ namespace NWN.MasterList
 		public async static Task<int> GetAveragePlayerCountPerServer(this Client client) =>
 			(int)((await client.GetServers()).Average(x => x.CurrentPlayers));
 
-		public async static Task<int> GetAverageLatency(this Client client) =>
+        public static bool IsAllSameBuild(this IOrderedEnumerable<NwServer> servers, string buildNumber) => 
+			servers.All(x => x.Build.Equals(buildNumber));
+
+        public static bool IsAllSameElc(this IOrderedEnumerable<NwServer> servers, bool elc) =>
+            servers.All(x => x.ELC.Equals(elc));
+
+        public static bool IsAllSameGameType(this IOrderedEnumerable<NwServer> servers, int gameType) =>
+            servers.All(x => x.GameType.Equals(gameType));
+
+        public async static Task<int> GetAverageLatency(this Client client) =>
 			(int)((await client.GetServers()).Average(x => x.Latency));
 		}
 }
