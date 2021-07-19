@@ -47,7 +47,7 @@ namespace NWN.MasterList
                 case 0: return "None";
                 case 1: return "Party";
                 case 2: return "Full";
-                default: throw new ArgumentOutOfRangeException(); 
+                default: throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -55,10 +55,22 @@ namespace NWN.MasterList
         {
             switch (os)
             {
-                case 1: return "Windows";
-                case 10: return "Linux";
-                case 50: return "Unknown";
-                case 60: return "Unknown";
+                case 0: return "Invalid";
+                case 1: return "Windows x86";
+                case 2: return "Windows x64";
+                case 10: return "Linux x86";
+                case 11: return "Linux x64";
+                case 12: return "Linux arm32";
+                case 13: return "Linux arm64";
+                case 20: return "Mac x86";
+                case 21: return "Mac x64";
+                case 30: return "IOS";
+                case 40: return "Android arm32";
+                case 41: return "Android arm64";
+                case 42: return "Android x64";
+                case 50: return "Nintendo Switch";
+                case 60: return "Xbox One";
+                case 70: return "PS4";
                 default: throw new ArgumentOutOfRangeException();
             }
         }
@@ -93,7 +105,7 @@ namespace NWN.MasterList
                 case 9: return "PW Action";
                 case 10: return " PW Story";
                 case 11: return "Solo";
-                case 12: return "PolTech Support";
+                case 12: return "Tech Support";
                 default: throw new ArgumentOutOfRangeException();
             }
         }
