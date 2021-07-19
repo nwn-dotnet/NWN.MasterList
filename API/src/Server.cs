@@ -56,18 +56,18 @@ namespace NWN.MasterList
             switch (os)
             {
                 case 0: return "Invalid";
-                case 1: return "Windows x86";
-                case 2: return "Windows x64";
-                case 10: return "Linux x86";
-                case 11: return "Linux x64";
-                case 12: return "Linux arm32";
-                case 13: return "Linux arm64";
-                case 20: return "Mac x86";
-                case 21: return "Mac x64";
+                case 1: return "Windows(x86)";
+                case 2: return "Windows(x64)";
+                case 10: return "Linux(x86)";
+                case 11: return "Linux(x64)";
+                case 12: return "Linux(arm32)";
+                case 13: return "Linux(arm64)";
+                case 20: return "Mac(x86)";
+                case 21: return "Mac(x64)";
                 case 30: return "IOS";
-                case 40: return "Android arm32";
-                case 41: return "Android arm64";
-                case 42: return "Android x64";
+                case 40: return "Android(arm32)";
+                case 41: return "Android(rm64)";
+                case 42: return "Android(x64)";
                 case 50: return "Nintendo Switch";
                 case 60: return "Xbox One";
                 case 70: return "PS4";
@@ -85,6 +85,10 @@ namespace NWN.MasterList
                 case 3: return "Italian";
                 case 4: return "Spanish";
                 case 5: return "Polish";
+                case 128: return "Korean";
+                case 129: return "Chinese (traditional)";
+                case 130: return "Chinese(simplified)";
+                case 131: return "Japanese";
                 default: throw new ArgumentOutOfRangeException();
             }
         }
