@@ -596,8 +596,10 @@ namespace NWN.MasterList.Test
         public async void TestFromUnixTime()
         {
             var collection = await new MasterList.Client().GetAllFirstSeen();
-            var dateTime = ((long)collection.FirstOrDefault().FirstSeen).FromUnixTime();
-            output.WriteLine($"{dateTime}");
+            var firstSeen = ((long)collection.FirstOrDefault().FirstSeen).FromUnixTime();
+            var lastAdvertisement = ((long)collection.FirstOrDefault().LastAdvertisement).FromUnixTime();
+            output.WriteLine($"FirstSeen -> {firstSeen}");
+            output.WriteLine($"Last Advertisement -> {lastAdvertisement}");
             Assert.NotNull(collection);
         }
     }
