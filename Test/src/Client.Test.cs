@@ -378,13 +378,13 @@ namespace NWN.MasterList.Test
         }
 
         [Fact]
-        public async void TestGetAllNwSync()
+        public async void TestGetAllNwSyncUrls()
         {
-            var collection = await new MasterList.Client().GetAllNwSync();
+            var collection = await new MasterList.Client().GetAllNwSyncUrls();
 
             foreach (var item in collection)
             {
-                output.WriteLine($"{item.NwSync.URL}");
+                output.WriteLine($"{item.ModuleName} -> {item.NwSync.URL}");
             }
 
             Assert.NotEmpty(collection);

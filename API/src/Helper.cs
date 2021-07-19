@@ -107,7 +107,7 @@ namespace NWN.MasterList
         // TODO #18
         public async static Task<IOrderedEnumerable<NwServer>> GetAllNwSyncUrls(this Client client)
         {
-            return (IOrderedEnumerable<NwServer>)(await client.GetServers()).OrderBy(x => x.NwSync.URL);
+            return (IOrderedEnumerable<NwServer>)(await client.GetServers()).Where(x => !String.IsNullOrWhiteSpace(x.NwSync.URL)).OrderBy(x => x.NwSync.URL);
         }
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllOneParty(this Client client) =>
