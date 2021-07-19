@@ -103,7 +103,7 @@ namespace NWN.MasterList
                 case 7: return "Social";
                 case 8: return "Alternative";
                 case 9: return "PW Action";
-                case 10: return " PW Story";
+                case 10: return "PW Story";
                 case 11: return "Solo";
                 case 12: return "Tech Support";
                 default: throw new ArgumentOutOfRangeException();
