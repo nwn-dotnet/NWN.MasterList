@@ -377,19 +377,19 @@ namespace NWN.MasterList.Test
             Assert.NotNull(collection);
         }
 
-        /*[Fact]
+        [Fact]
         public async void TestGetAllNwSync()
         {
             var collection = await new MasterList.Client().GetAllNwSync();
 
             foreach (var item in collection)
             {
-                output.WriteLine($"{item.ModuleName} -> {item.NwSync}");
+                output.WriteLine($"{item.NwSync.URL}");
             }
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
-        }*/
+        }
 
         [Fact]
         public async void TestGetAllOneParty()

@@ -105,9 +105,10 @@ namespace NWN.MasterList
             (await client.GetServers()).OrderBy(x => x.ModuleName);
 
         // TODO #18
-        /*public async static Task<IOrderedEnumerable<NwServer>> GetAllNwSync(this Client client) =>
-	(await client.GetServers()).OrderBy(x => x.NwSync);
-	*/
+        public async static Task<IOrderedEnumerable<NwServer>> GetAllNwSyncUrls(this Client client)
+        {
+            return (IOrderedEnumerable<NwServer>)(await client.GetServers()).OrderBy(x => x.NwSync.URL);
+        }
 
         public async static Task<IOrderedEnumerable<NwServer>> GetAllOneParty(this Client client) =>
             (await client.GetServers()).OrderBy(x => x.OneParty).ThenBy(x => x.ModuleName);
