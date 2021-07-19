@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -31,6 +32,12 @@ namespace NWN.MasterList
         {
             string response = await Client.HttpClient.GetStringAsync(jsonUrl);
             return JsonSerializer.Deserialize<Me>(response);
+        }
+
+        public static DateTime FromUnixTime(this long unixTime)
+        {
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return epoch.AddSeconds(unixTime);
         }
     }
 }

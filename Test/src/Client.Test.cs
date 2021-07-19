@@ -30,7 +30,7 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetAllFirstSeen();
 
-            foreach (var item in collection)
+            foreach (var item in collection.Reverse())
             {
                 output.WriteLine($"{item.ModuleName} -> {item.FirstSeen}");
             }
@@ -589,6 +589,15 @@ namespace NWN.MasterList.Test
         {
             var collection = await new MasterList.Client().GetElcCountByType(true);
             output.WriteLine($"{collection}");
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestFromUnixTime()
+        {
+            var collection = await new MasterList.Client().GetAllFirstSeen();
+            var dateTime = ((long)collection.FirstOrDefault().FirstSeen).FromUnixTime();
+            output.WriteLine($"{dateTime}");
             Assert.NotNull(collection);
         }
     }
