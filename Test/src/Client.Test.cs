@@ -119,7 +119,7 @@ namespace NWN.MasterList.Test
             {
                 testB += item.CurrentPlayers;
             }
-            
+
             Assert.Equal(testA, testB);
         }
 
@@ -385,6 +385,20 @@ namespace NWN.MasterList.Test
             foreach (var item in collection)
             {
                 output.WriteLine($"{item.ModuleName} -> {item.NwSync.URL}");
+            }
+
+            Assert.NotEmpty(collection);
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetAllNwSyncManifestHash()
+        {
+            var collection = await new MasterList.Client().GetAllNwSyncManifestHash();
+
+            foreach (var item in collection)
+            {
+                //output.WriteLine($"{item.ModuleName} -> {item.NwSync.Manifests}");
             }
 
             Assert.NotEmpty(collection);
