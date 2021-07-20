@@ -28,9 +28,9 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllFirstSeen()
         {
-            var collection = await new MasterList.Client().GetAllFirstSeen();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
-            foreach (var item in collection.Reverse())
+            foreach (var item in collection)
             {
                 output.WriteLine($"{item.ModuleName} -> {item.FirstSeen}");
             }
@@ -42,7 +42,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllLastAdvertisement()
         {
-            var collection = await new MasterList.Client().GetAllLastAdvertisement();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -56,7 +56,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllBuild()
         {
-            var collection = await new MasterList.Client().GetAllBuild();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -70,7 +70,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllBuildByType()
         {
-            var collection = await new MasterList.Client().GetAllBuildByType("8186");
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -84,7 +84,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllConnectionHint()
         {
-            var collection = await new MasterList.Client().GetAllConnectHint();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -98,7 +98,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllCurrentPlayersByModuleName()
         {
-            var collection = await new MasterList.Client().GetAllCurrentPlayersByModuleName();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -113,7 +113,7 @@ namespace NWN.MasterList.Test
         public async void TestGetTotalPlayerCount()
         {
             var testB = 0;
-            var testA = await new MasterList.Client().GetTotalPlayerCount();
+            var testA = (await new MasterList.Client().GetServers()).GetTotalPlayerCount();
 
             foreach (var item in await new MasterList.Client().GetServers())
             {
@@ -126,7 +126,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllElC()
         {
-            var collection = await new MasterList.Client().GetAllElc();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -140,7 +140,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllElcByType()
         {
-            var collection = await new MasterList.Client().GetAllElcByType(false);
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -154,7 +154,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllGameType()
         {
-            var collection = await new MasterList.Client().GetAllGameType();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection)
             {
@@ -168,7 +168,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllGameTypeByType()
         {
-            var collection = await new MasterList.Client().GetAllGameTypeByType(10);
+            var collection = (await new MasterList.Client().GetServers()).GetAllGameTypeByType(10);
 
             foreach (var item in collection)
             {
@@ -182,7 +182,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetIRLAll()
         {
-            var collection = await new MasterList.Client().GetILRAll();
+            var collection = (await new MasterList.Client().GetServers()).GetILRAll();
 
             foreach (var item in collection)
             {
@@ -196,7 +196,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllIrlByType()
         {
-            var collection = await new MasterList.Client().GetAllIlrByType(true);
+            var collection = (await new MasterList.Client().GetServers()).GetAllIlrByType(true);
 
             foreach (var item in collection)
             {
@@ -211,7 +211,7 @@ namespace NWN.MasterList.Test
         public async void TestGetAllServersByIp()
         {
             //  A Carpathian Nightmare
-            var collection = await new MasterList.Client().GetAllServersByIp("68.183.104.164");
+            var collection = (await new MasterList.Client().GetServers()).GetAllServersByIp("68.183.104.164");
 
             foreach (var item in collection)
             {
@@ -225,7 +225,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllKxPk()
         {
-            var collection = await new MasterList.Client().GetAllKxPk();
+            var collection = (await new MasterList.Client().GetServers()).GetAllKxPk();
 
             foreach (var item in collection)
             {
@@ -240,7 +240,7 @@ namespace NWN.MasterList.Test
         public async void TestGetAllServersByKxPk()
         {
             //  A Carpathian Nightmare
-            var collection = await new MasterList.Client().GetAllServersByKxPk("6FttLhv6ICT0EEIQC8DnBnZeGJUzTZE/iGbsXsdhrwI=");
+            var collection = (await new MasterList.Client().GetServers()).GetAllServersByKxPk("6FttLhv6ICT0EEIQC8DnBnZeGJUzTZE/iGbsXsdhrwI=");
 
             foreach (var item in collection)
             {
@@ -254,7 +254,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllLanguage()
         {
-            var collection = await new MasterList.Client().GetAllLanguage();
+            var collection = (await new MasterList.Client().GetServers()).GetAllLanguage();
 
             foreach (var item in collection)
             {
@@ -268,7 +268,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllLanguageByType()
         {
-            var collection = await new MasterList.Client().GetAllLanguageByType(0);
+            var collection = (await new MasterList.Client().GetServers()).GetAllLanguageByType(0);
 
             foreach (var item in collection)
             {
@@ -282,7 +282,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllLatency()
         {
-            var collection = await new MasterList.Client().GetAllLatency();
+            var collection = (await new MasterList.Client().GetServers()).GetAllLatency();
 
             foreach (var item in collection)
             {
@@ -296,7 +296,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetLatencyGreaterThan()
         {
-            var collection = await new MasterList.Client().GetLatencyGreaterThan(200);
+            var collection = (await new MasterList.Client().GetServers()).GetLatencyGreaterThan(200);
 
             foreach (var item in collection)
             {
@@ -310,7 +310,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetLatencyRange()
         {
-            var collection = await new MasterList.Client().GetLatencyRange(100, 200);
+            var collection = (await new MasterList.Client().GetServers()).GetLatencyRange(100, 200);
 
             foreach (var item in collection)
             {
@@ -324,7 +324,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetMaxLevelGreaterThan()
         {
-            var collection = await new MasterList.Client().GetMaxLevelGreaterThan(20);
+            var collection = (await new MasterList.Client().GetServers()).GetMaxLevelGreaterThan(20);
 
             foreach (var item in collection)
             {
@@ -338,7 +338,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetMaxLevelRange()
         {
-            var collection = await new MasterList.Client().GetMaxLevelRange(20, 40);
+            var collection = (await new MasterList.Client().GetServers()).GetMaxLevelRange(20, 40);
 
             foreach (var item in collection)
             {
@@ -352,7 +352,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllModuleDescription()
         {
-            var collection = await new MasterList.Client().GetAllModuleDescription();
+            var collection = (await new MasterList.Client().GetServers()).GetAllModuleDescription();
 
             foreach (var item in collection)
             {
@@ -366,7 +366,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllByModuleName()
         {
-            var collection = await new MasterList.Client().GetAllByModuleName();
+            var collection = (await new MasterList.Client().GetServers()).GetAllByModuleName();
 
             foreach (var item in collection)
             {
@@ -380,7 +380,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllNwSyncUrls()
         {
-            var collection = await new MasterList.Client().GetAllNwSyncUrls();
+            var collection = (await new MasterList.Client().GetServers()).GetAllNwSyncUrls();
 
             foreach (var item in collection)
             {
@@ -391,10 +391,10 @@ namespace NWN.MasterList.Test
             Assert.NotNull(collection);
         }
 
-        [Fact]
+        /*[Fact]
         public async void TestGetAllNwSyncManifestHash()
         {
-            var collection = await new MasterList.Client().GetAllNwSyncManifestHash();
+            var collection = (await new MasterList.Client().GetServers()).GetAllNwSyncManifestHash();
 
             foreach (var item in collection)
             {
@@ -403,12 +403,12 @@ namespace NWN.MasterList.Test
 
             Assert.NotEmpty(collection);
             Assert.NotNull(collection);
-        }
+        }*/
 
         [Fact]
         public async void TestGetAllOneParty()
         {
-            var collection = await new MasterList.Client().GetAllOneParty();
+            var collection = (await new MasterList.Client().GetServers()).GetAllOneParty();
 
             foreach (var item in collection)
             {
@@ -422,7 +422,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetOnePartyByType()
         {
-            var collection = await new MasterList.Client().GetOnePartyByType(true);
+            var collection = (await new MasterList.Client().GetServers()).GetOnePartyByType(true);
 
             foreach (var item in collection)
             {
@@ -436,7 +436,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllOS()
         {
-            var collection = await new MasterList.Client().GetAllOS();
+            var collection = (await new MasterList.Client().GetServers()).GetAllOS();
 
             foreach (var item in collection)
             {
@@ -450,7 +450,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllOSByType()
         {
-            var collection = await new MasterList.Client().GetAllOSByType(1);
+            var collection = (await new MasterList.Client().GetServers()).GetAllOSByType(1);
 
             foreach (var item in collection)
             {
@@ -464,7 +464,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllPassworded()
         {
-            var collection = await new MasterList.Client().GetAllPassworded();
+            var collection = (await new MasterList.Client().GetServers()).GetAllPassworded();
 
             foreach (var item in collection)
             {
@@ -478,7 +478,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetPasswordedByType()
         {
-            var collection = await new MasterList.Client().GetPasswordedByType(true);
+            var collection = (await new MasterList.Client().GetServers()).GetPasswordedByType(true);
 
             foreach (var item in collection)
             {
@@ -492,7 +492,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllPlayerPause()
         {
-            var collection = await new MasterList.Client().GetAllPlayerPause();
+            var collection = (await new MasterList.Client().GetServers()).GetAllPlayerPause();
 
             foreach (var item in collection)
             {
@@ -506,7 +506,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetPlayerPauseByType()
         {
-            var collection = await new MasterList.Client().GetPlayerPauseByType(true);
+            var collection = (await new MasterList.Client().GetServers()).GetPlayerPauseByType(true);
 
             foreach (var item in collection)
             {
@@ -520,7 +520,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllByPortNumber()
         {
-            var collection = await new MasterList.Client().GetAllByPortNumber(5121);
+            var collection = (await new MasterList.Client().GetServers()).GetAllByPortNumber(5121);
 
             foreach (var item in collection)
             {
@@ -534,7 +534,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllSignPk()
         {
-            var collection = await new MasterList.Client().GetAllSignPk();
+            var collection = (await new MasterList.Client().GetServers()).GetAllSignPk();
 
             foreach (var item in collection)
             {
@@ -549,7 +549,7 @@ namespace NWN.MasterList.Test
         public async void TestGetAllSignPkByType()
         {
             //  Amia
-            var collection = await new MasterList.Client().GetAllSignPkByType("1r7bU9BtpiAmiWLQz7xaCuZaLf3lQE8mn4T675u8HDQ=");
+            var collection = (await new MasterList.Client().GetServers()).GetAllSignPkByType("1r7bU9BtpiAmiWLQz7xaCuZaLf3lQE8mn4T675u8HDQ=");
 
             foreach (var item in collection)
             {
@@ -563,7 +563,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetAllOsByTypePlayerDescending()
         {
-            var collection = await new MasterList.Client().GetAllOsByTypePlayerDescending(1);
+            var collection = (await new MasterList.Client().GetServers()).GetAllOsByTypePlayerDescending(1);
 
             foreach (var item in collection)
             {
@@ -575,17 +575,9 @@ namespace NWN.MasterList.Test
         }
 
         [Fact]
-        public async void TestGetPlayerCapacity()
-        {
-            var collection = await new MasterList.Client().GetAveragePlayerCountPerServer();
-            output.WriteLine($"{collection}");
-            Assert.NotNull(collection);
-        }
-
-        [Fact]
         public async void TestGetAverageLatency()
         {
-            var collection = await new MasterList.Client().GetAverageLatency();
+            var collection = (await new MasterList.Client().GetServers()).GetAverageLatency();
             output.WriteLine($"{collection}");
             Assert.NotNull(collection);
         }
@@ -593,7 +585,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void GetBuildCountByBuildType()
         {
-            var collection = await new MasterList.Client().GetBuildCountByType("8193");
+            var collection = (await new MasterList.Client().GetServers()).GetBuildCountByType("8193");
             output.WriteLine($"{collection}");
             Assert.NotNull(collection);
         }
@@ -601,7 +593,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestGetElcCountByType()
         {
-            var collection = await new MasterList.Client().GetElcCountByType(true);
+            var collection = (await new MasterList.Client().GetServers()).GetElcCountByType(true);
             output.WriteLine($"{collection}");
             Assert.NotNull(collection);
         }
@@ -609,7 +601,7 @@ namespace NWN.MasterList.Test
         [Fact]
         public async void TestFromUnixTime()
         {
-            var collection = await new MasterList.Client().GetAllFirstSeen();
+            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
             var firstSeen = ((long)collection.FirstOrDefault().FirstSeen).FromUnixTime();
             var lastAdvertisement = ((long)collection.FirstOrDefault().LastAdvertisement).FromUnixTime();
             output.WriteLine($"FirstSeen -> {firstSeen}");

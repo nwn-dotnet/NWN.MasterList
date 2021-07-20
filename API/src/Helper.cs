@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using NWN.MasterList.Data;
 
 namespace NWN.MasterList
@@ -109,10 +108,10 @@ namespace NWN.MasterList
         }
 
         // TODO #18
-        public static IOrderedEnumerable<NwServer> GetAllNwSyncManifestHash(this IEnumerable<NwServer> servers)
+        /*public static IOrderedEnumerable<NwServer> GetAllNwSyncManifestHash(this IEnumerable<NwServer> servers)
         {
             return (servers.Select(x => x.NwSync.Manifests.Where(y => y.Hash != string.Empty))).OrderBy(x => x.ModuleName);
-        }
+        }*/
 
         public static IOrderedEnumerable<NwServer> GetAllOneParty(this IEnumerable<NwServer> servers) =>
             servers.OrderBy(x => x.OneParty).ThenBy(x => x.ModuleName);
