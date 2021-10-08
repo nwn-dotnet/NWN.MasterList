@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -616,6 +617,17 @@ namespace NWN.MasterList.Test
             foreach (var item in collection)
             {
                 output.WriteLine(item);
+            }
+            Assert.NotNull(collection);
+        }
+
+        [Fact]
+        public async void TestGetUniqueVersionCount()
+        {
+            Dictionary<string, int> collection = (await new MasterList.Client().GetServers()).GetUniqueVersionCount();
+            foreach (KeyValuePair<string, int> server in collection)
+            {
+                output.WriteLine($"{server.Key} -> {server.Value}");
             }
             Assert.NotNull(collection);
         }

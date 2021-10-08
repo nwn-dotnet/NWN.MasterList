@@ -393,13 +393,34 @@ namespace NWN.MasterList
             IOrderedEnumerable<NwServer> collection = servers.OrderByDescending(x => x.Build).ThenByDescending(x => x.Revision);
             List<string> data = new List<string>();
 
-            foreach (NwServer item in collection)
+            foreach (NwServer server in collection)
             {
-                string temp = $"{item.Build}:{item.Revision}";
+                string temp = $"{server.Build}:{server.Revision}";
 
                 if (!data.Contains(temp))
                 {
                     data.Add(temp);
+                }
+            }
+            return data;
+        }
+
+        public static Dictionary<string, int> GetUniqueVersionCount(this IEnumerable<NwServer> servers)
+        {
+            IOrderedEnumerable<NwServer> collection = servers.OrderByDescending(x => x.Build).ThenByDescending(x => x.Revision);
+            Dictionary<string, int> data = new Dictionary<string, int>();
+
+            foreach (NwServer server in collection)
+            {
+                string temp = $"{server.Build}:{server.Revision}";
+
+                if (data.ContainsKey(temp))
+                {
+                    data[temp]++;
+                }
+                else
+                {
+                    data.Add(temp, 1);
                 }
             }
             return data;
