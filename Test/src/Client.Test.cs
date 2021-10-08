@@ -580,7 +580,7 @@ namespace NWN.MasterList.Test
         {
             var collection = (await new MasterList.Client().GetServers()).GetAverageLatency();
             output.WriteLine($"{collection}");
-            Assert.NotNull(collection);
+            Assert.NotEqual(-1, collection);
         }
 
         [Fact]
@@ -596,7 +596,7 @@ namespace NWN.MasterList.Test
         {
             var collection = (await new MasterList.Client().GetServers()).GetElcCountByType(true);
             output.WriteLine($"{collection}");
-            Assert.NotNull(collection);
+            Assert.NotEqual(-1, collection);
         }
 
         [Fact]
