@@ -387,5 +387,22 @@ namespace NWN.MasterList
 
         public static int GetAverageMinLevel(this IEnumerable<NwServer> servers) =>
             (int)(servers.Average(x => x.MinLevel));
+        
+        public static List<string> GetUniqueVersion(this IEnumerable<NwServer> servers)
+        {
+            IOrderedEnumerable<NwServer> collection = servers.OrderByDescending(x => x.Build).ThenByDescending(x => x.Revision);
+            List<string> data = new List<string>();
+
+            foreach (NwServer item in collection)
+            {
+                string temp = $"{item.Build}:{item.Revision}";
+
+                if (!data.Contains(temp))
+                {
+                    data.Add(temp);
+                }
+            }
+            return data;
+        }
     }
 }

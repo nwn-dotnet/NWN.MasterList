@@ -608,5 +608,16 @@ namespace NWN.MasterList.Test
             output.WriteLine($"Last Advertisement -> {lastAdvertisement}");
             Assert.NotNull(collection);
         }
+
+        [Fact]
+        public async void TestGetUniqueVersions()
+        {
+            var collection = (await new MasterList.Client().GetServers()).GetUniqueVersion();
+            foreach (var item in collection)
+            {
+                output.WriteLine(item);
+            }
+            Assert.NotNull(collection);
+        }
     }
 }
