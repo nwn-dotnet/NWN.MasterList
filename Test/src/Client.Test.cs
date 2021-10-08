@@ -588,7 +588,7 @@ namespace NWN.MasterList.Test
         {
             var collection = (await new MasterList.Client().GetServers()).GetBuildCountByType("8193");
             output.WriteLine($"{collection}");
-            Assert.NotNull(collection);
+            Assert.NotEqual(-1, collection);
         }
 
         [Fact]
