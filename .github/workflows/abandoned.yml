@@ -1,6 +1,4 @@
-
 name: Delete abandoned branches
-
 on:
   # Run daily at midnight
   schedule:
