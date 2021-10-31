@@ -6,9 +6,9 @@ using Xunit.Abstractions;
 namespace NWN.MasterList.Test {
     public class Client {
         private readonly ITestOutputHelper output;
-        
+
         public Client(ITestOutputHelper output) => this.output = output;
-    
+
         [Fact]
         public async void GetServersTest() {
             var connection = new MasterList.Client();
