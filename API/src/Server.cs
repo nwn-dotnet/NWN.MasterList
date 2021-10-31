@@ -4,45 +4,36 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using NWN.MasterList.Data;
 
-namespace NWN.MasterList
-{
-    public static class Server
-    {
+namespace NWN.MasterList {
+    public static class Server {
         public static string jsonUrl = "https://api.nwn.beamdog.net/v1/";
 
-        public static async Task<IEnumerable<NwServer>> GetServers(this Client client)
-        {
+        public static async Task<IEnumerable<NwServer>> GetServers(this Client client) {
             string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers");
             return JsonSerializer.Deserialize<List<NwServer>>(response);
         }
 
-        public static async Task<NwServer> GetServer(this Client client, string publicKey)
-        {
+        public static async Task<NwServer> GetServer(this Client client, string publicKey) {
             string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers{publicKey}");
             return JsonSerializer.Deserialize<NwServer>(response);
         }
-        public static async Task<NwServer> GetServer(this Client client, string ip, int port)
-        {
+        public static async Task<NwServer> GetServer(this Client client, string ip, int port) {
             string response = await Client.HttpClient.GetStringAsync($"{jsonUrl}/servers/{ip}/{port}");
             return JsonSerializer.Deserialize<NwServer>(response);
         }
 
-        public static async Task<Me> GetMe(this Client client)
-        {
+        public static async Task<Me> GetMe(this Client client) {
             string response = await Client.HttpClient.GetStringAsync(jsonUrl);
             return JsonSerializer.Deserialize<Me>(response);
         }
 
-        public static DateTime FromUnixTime(this long unixTime)
-        {
+        public static DateTime FromUnixTime(this long unixTime) {
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return epoch.AddSeconds(unixTime);
         }
 
-        public static string ParsePvP(int pvp)
-        {
-            switch (pvp)
-            {
+        public static string ParsePvP(int pvp) {
+            switch (pvp) {
                 case 0: return "None";
                 case 1: return "Party";
                 case 2: return "Full";
@@ -50,10 +41,8 @@ namespace NWN.MasterList
             }
         }
 
-        public static string ParseOS(int os)
-        {
-            switch (os)
-            {
+        public static string ParseOS(int os) {
+            switch (os) {
                 case 0: return "Invalid";
                 case 1: return "Windows(x86)";
                 case 2: return "Windows(x64)";
@@ -74,10 +63,8 @@ namespace NWN.MasterList
             }
         }
 
-        public static string ParseLanguage(int language)
-        {
-            switch (language)
-            {
+        public static string ParseLanguage(int language) {
+            switch (language) {
                 case 0: return "English";
                 case 1: return "French";
                 case 2: return "German";
@@ -92,10 +79,8 @@ namespace NWN.MasterList
             }
         }
 
-        public static string ParseGameType(int gameType)
-        {
-            switch (gameType)
-            {
+        public static string ParseGameType(int gameType) {
+            switch (gameType) {
                 case 0: return "Action";
                 case 1: return "Story";
                 case 2: return "Story Lite";
