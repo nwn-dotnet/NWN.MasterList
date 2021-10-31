@@ -95,18 +95,6 @@ namespace NWN.MasterList.Test {
         }
 
         [Fact]
-        public async void TestGetAllElcByType() {
-            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
-
-            foreach (var item in collection) {
-                output.WriteLine($"{item.ModuleName} -> {item.ELC}");
-            }
-
-            Assert.NotEmpty(collection);
-            Assert.NotNull(collection);
-        }
-
-        [Fact]
         public async void TestGetAllGameTypeByType() {
             var collection = (await new MasterList.Client().GetServers()).GetAllGameTypeByType(10);
 
