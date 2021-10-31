@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using NWN.MasterList.Data;
 
-namespace NWN.MasterList
-{
-    public static class Helper
-    {
+namespace NWN.MasterList {
+    public static class Helper {
         public static int MasterListPositionFromSessionName(this IEnumerable<NwServer> servers, List<NwServer> nwServer, string sessionName) =>
             servers.Where(s => s.SessionName == sessionName).Select(self => nwServer.IndexOf(self)).FirstOrDefault();
 
@@ -28,8 +26,7 @@ namespace NWN.MasterList
         public static IOrderedEnumerable<NwServer> GetAllElcByType(this IEnumerable<NwServer> servers, bool setting) =>
             servers.Where(x => x.ELC == setting).OrderBy(x => x.ModuleName);
 
-        public static IOrderedEnumerable<NwServer> GetAllFirstSeen(this IEnumerable<NwServer> servers)
-        {
+        public static IOrderedEnumerable<NwServer> GetAllFirstSeen(this IEnumerable<NwServer> servers) {
             return servers.OrderBy(x => x.FirstSeen).ThenBy(x => x.ModuleName);
         }
 
@@ -102,8 +99,7 @@ namespace NWN.MasterList
         public static IOrderedEnumerable<NwServer> GetAllByModuleName(this IEnumerable<NwServer> servers) =>
             servers.OrderBy(x => x.ModuleName);
 
-        public static IOrderedEnumerable<NwServer> GetAllNwSyncUrls(this IEnumerable<NwServer> servers)
-        {
+        public static IOrderedEnumerable<NwServer> GetAllNwSyncUrls(this IEnumerable<NwServer> servers) {
             return servers.Where(x => !String.IsNullOrWhiteSpace(x.NwSync.URL)).OrderBy(x => x.NwSync.URL);
         }
 
@@ -387,39 +383,32 @@ namespace NWN.MasterList
 
         public static int GetAverageMinLevel(this IEnumerable<NwServer> servers) =>
             (int)(servers.Average(x => x.MinLevel));
-        
-        public static List<string> GetUniqueVersion(this IEnumerable<NwServer> servers)
-        {
+
+        public static List<string> GetUniqueVersion(this IEnumerable<NwServer> servers) {
             IOrderedEnumerable<NwServer> collection = servers.OrderByDescending(x => x.Build).ThenByDescending(x => x.Revision);
             List<string> data = new List<string>();
 
-            foreach (NwServer server in collection)
-            {
+            foreach (NwServer server in collection) {
                 string temp = $"{server.Build}:{server.Revision}";
 
-                if (!data.Contains(temp))
-                {
+                if (!data.Contains(temp)) {
                     data.Add(temp);
                 }
             }
             return data;
         }
 
-        public static Dictionary<string, int> GetUniqueVersionCount(this IEnumerable<NwServer> servers)
-        {
+        public static Dictionary<string, int> GetUniqueVersionCount(this IEnumerable<NwServer> servers) {
             IOrderedEnumerable<NwServer> collection = servers.OrderByDescending(x => x.Build).ThenByDescending(x => x.Revision);
             Dictionary<string, int> data = new Dictionary<string, int>();
 
-            foreach (NwServer server in collection)
-            {
+            foreach (NwServer server in collection) {
                 string temp = $"{server.Build}:{server.Revision}";
 
-                if (data.ContainsKey(temp))
-                {
+                if (data.ContainsKey(temp)) {
                     data[temp]++;
                 }
-                else
-                {
+                else {
                     data.Add(temp, 1);
                 }
             }
