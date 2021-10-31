@@ -95,18 +95,6 @@ namespace NWN.MasterList.Test {
         }
 
         [Fact]
-        public async void TestGetTotalPlayerCount() {
-            var testB = 0;
-            var testA = (await new MasterList.Client().GetServers()).GetTotalPlayerCount();
-
-            foreach (var item in await new MasterList.Client().GetServers()) {
-                testB += item.CurrentPlayers;
-            }
-
-            Assert.Equal(testA, testB);
-        }
-
-        [Fact]
         public async void TestGetAllElC() {
             var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
