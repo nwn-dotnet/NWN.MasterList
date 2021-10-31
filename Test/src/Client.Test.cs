@@ -59,18 +59,6 @@ namespace NWN.MasterList.Test {
         }
 
         [Fact]
-        public async void TestGetAllBuildByType() {
-            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
-
-            foreach (var item in collection) {
-                output.WriteLine($"{item.ModuleName} -> {item.Build}");
-            }
-
-            Assert.NotEmpty(collection);
-            Assert.NotNull(collection);
-        }
-
-        [Fact]
         public async void TestGetAllConnectionHint() {
             var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
@@ -100,30 +88,6 @@ namespace NWN.MasterList.Test {
 
             foreach (var item in collection) {
                 output.WriteLine($"{item.ModuleName} -> {item.ELC}");
-            }
-
-            Assert.NotEmpty(collection);
-            Assert.NotNull(collection);
-        }
-
-        [Fact]
-        public async void TestGetAllElcByType() {
-            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
-
-            foreach (var item in collection) {
-                output.WriteLine($"{item.ModuleName} -> {item.ELC}");
-            }
-
-            Assert.NotEmpty(collection);
-            Assert.NotNull(collection);
-        }
-
-        [Fact]
-        public async void TestGetAllGameType() {
-            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
-
-            foreach (var item in collection) {
-                output.WriteLine($"{item.ModuleName} -> {item.GameType}");
             }
 
             Assert.NotEmpty(collection);
