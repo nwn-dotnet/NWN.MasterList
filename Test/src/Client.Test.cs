@@ -6,9 +6,9 @@ using Xunit.Abstractions;
 namespace NWN.MasterList.Test {
     public class Client {
         private readonly ITestOutputHelper output;
-
+        
         public Client(ITestOutputHelper output) => this.output = output;
-
+    
         [Fact]
         public async void GetServersTest() {
             var connection = new MasterList.Client();
@@ -48,18 +48,6 @@ namespace NWN.MasterList.Test {
 
         [Fact]
         public async void TestGetAllBuild() {
-            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
-
-            foreach (var item in collection) {
-                output.WriteLine($"{item.ModuleName} -> {item.Build}");
-            }
-
-            Assert.NotEmpty(collection);
-            Assert.NotNull(collection);
-        }
-
-        [Fact]
-        public async void TestGetAllBuildByType() {
             var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
 
             foreach (var item in collection) {
@@ -112,18 +100,6 @@ namespace NWN.MasterList.Test {
 
             foreach (var item in collection) {
                 output.WriteLine($"{item.ModuleName} -> {item.ELC}");
-            }
-
-            Assert.NotEmpty(collection);
-            Assert.NotNull(collection);
-        }
-
-        [Fact]
-        public async void TestGetAllGameType() {
-            var collection = (await new MasterList.Client().GetServers()).GetAllFirstSeen();
-
-            foreach (var item in collection) {
-                output.WriteLine($"{item.ModuleName} -> {item.GameType}");
             }
 
             Assert.NotEmpty(collection);
